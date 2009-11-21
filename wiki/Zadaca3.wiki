@@ -6,7 +6,7 @@
 
  * u tabelu Autor dodati polja opis i biografija
 
- * opcija razervacije nekih ćestih knjiga
+ * opcija razervacije nekih čestih knjiga
 
  * primjerak knige treba da ima status
 
