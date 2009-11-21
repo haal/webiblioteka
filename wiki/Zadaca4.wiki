@@ -1,0 +1,6 @@
+#summary Zadaci za zadacu 4
+
+=== Lista zadataka ===
+
+ * opis korisnicke tacke gledista
+ * horizontalni i vertikalni pogled
