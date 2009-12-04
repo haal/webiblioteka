@@ -12,7 +12,16 @@ dbconnect($conf_dbhost,$conf_dbuser,$conf_dbpass,$conf_dbdb);
 
 
 
-// Login form
+// Login forma i provjera sesije
+
+$greska="";
+$sta = my_escape($_REQUEST['sta']);
+
+if ($_POST['loginforma'] == "1") {
+	$login = my_escape($_POST['login']);
+	$pass = my_escape($_POST['pass']);
+	
+	if (!preg_match("/[\w\d]/",$login)) {
 		$greska="Nepoznat korisnik";
 	} else {
 		$status = login($pass);

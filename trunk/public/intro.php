@@ -39,8 +39,7 @@ function login_forma() {
 	<tr>
 		<td align="center">
 		<!-- Login forma -->
-		<script  language="JavaScript" src="public/loginprovjera.js"></script>
-		<form name="demo" onsubmit="return validateLoginFormOnSubmit(this)" action="<?=$uri?>"  method="POST">
+		<form action="<?=$uri?>" method="POST">
 		<input type="hidden" name="loginforma" value="1">
 		<table border="0">
 			<tr><td>Korisnicko ime:</td><td><input type="text" name="login" size="15"></td></tr>
