@@ -76,11 +76,9 @@ function bibliotekar_meni($fj) {
 		<td align="left">
 		<table border="0" width="100%">
 			<tr>
-				<td width="10%" valign="top" bgcolor="#FFFFFF" ><br><font size="-1" color="#FFFFFF">&nbsp;&nbsp;
-				<a href="?sta=bibliotekar/knjige">KNJIGE</a>
+				<td width="10%" valign="top" bgcolor="#FFFFFF" ><br><font size="-1" color="#FFFFFF">&nbsp;&nbsp;<a href="?sta=bibliotekar/knjige">KNJIGE</a>
 				<br>&nbsp;&nbsp;<a href="?sta=bibliotekar/clanovi">CLANOVI</a>
-				<br>
-				<a href="?sta=bibliotekar/obavijesti">OBAVIJESTI</a>
+				<br><br>
 				<br>&nbsp;&nbsp;<a href="?sta=logout">Logout</a></font><br><br>
 				</td>
 				<td width="2%"></td>
