@@ -19,6 +19,7 @@ array("admin/bibliotekari", "Upravljanje bibliotekarima", "Admin - Bibliotekari"
 array("bibliotekar/intro", "Bibliotekar", "Bibliotekar", "B"),
 array("bibliotekar/clanovi", "Upravljanje bibliotekarima", "Bibliotekar - Clanovi", "B"),
 array("bibliotekar/knjige", "Upravljanje knjigama", "Bibliotekar - Knjige", "B"),
+array("bibliotekar/obavijesti", "Upravljanje obavijestima", "Bibliotekar - Obavijesti", "B"),
 
 
 array("clan/intro", "Clan", "Clan", "C")
