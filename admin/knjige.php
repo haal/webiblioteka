@@ -8,11 +8,11 @@ $knjiga = intval($_REQUEST['knjiga']);
 
 
 //dodavanje nove knjige
-if ($_POST['akcija'] == 'dodajknjigu') {
+if ($_REQUEST['akcija'] == 'dodajknjigu') {
 	
 	$naslov = my_escape($_POST['naslov']);
 	$podnaslov = my_escape($_POST['podnaslov']);
-	$isbn = my_escape($_POST['isbn']);
+	$isbn = $_POST['isbn'];
 	$izdanje = my_escape($_POST['izdanje']);
 	$jezik = my_escape($_POST['jezik']);
 	$godina = intval($_POST['godina']);
@@ -64,24 +64,35 @@ if ($_REQUEST["akcija"]=="edit")
 
 if ($_POST['akcija'] == 'izmijeniknjigu') {
 
-	$limit = intval($_POST['limit']);
+if($knjiga){
+
+	$naslov = my_escape($_POST['naslov']);
+	$podnaslov = my_escape($_POST['podnaslov']);
+	$isbn = $_POST['isbn'];
+	$izdanje = my_escape($_POST['izdanje']);
+	$jezik = my_escape($_POST['jezik']);
+	$godina = intval($_POST['godina']);
+	$opis = my_escape($_POST['opis']);
+	$zanr = intval($_POST['zanr']);
+	$autor = intval($_POST['autor']);
+	$broj = intval($_POST['broj']);
    
 //Provjera ispravnosti
-	if ($limit<=0){
-		niceerror("Maksimalni broj studenata na ispitu mora biti veci od nule");
+	if ($broj<=0){
+		niceerror("Broj primjeraka mora biti veci od nule");
 		return 0;
 	}
-	if ($t1<=$t2){
-		niceerror("Krajnji rok za prijavu ispita mora raniji od tacnog vremena odzavanja ispita");
-		zamgerlog("los datum",3);
+	if ($godina<=0 || $godina>=2009){
+		niceerror("Neispravna godina izdavanja knjige");
 		return 0;
 	}
-		$sqlUpdate="UPDATE ispit_termin SET datumvrijeme=FROM_UNIXTIME('$t1') , maxstudenata=$limit , deadline=FROM_UNIXTIME('$t2') WHERE id=$termin";
+		$sqlUpdate="UPDATE knjigaopis SET naslov='$naslov' , podnaslov='$podnaslov' , isbn='$isbn', izdanje='$izdanje', opis='$opis', jezik='$jezik', godinaizdavanja='$godina', idzanr='$zanr', brojprimjeraka='$broj' WHERE idknjigaopis='$knjiga'";
 		$q05=myquery($sqlUpdate);
-		zamgerlog("Izmijenjen ispitni termin", 2);
+		
+}
 ?>
 		<script language="JavaScript">
-		window.location="?sta=nastavnik/ispiti&predmet=<? print $predmet; ?>&ag=<? print $ag; ?>";
+		window.location="?sta=admin/knjige";
 		</script>
 <?
 }
@@ -159,8 +170,8 @@ $q03 = myquery("SELECT idZanr, naziv FROM zanr");
 	else print '<b>Dodavanje nove knjige:</b><br><br>';?>
 	<?=genform("POST");?>
 <?
-	if($knjiga<=0) print '<input type="hidden" name="akcija" value="dodajknjigu">';
-	   else print '<input type="hidden" name="akcija" value="izmijeniknjigu">';
+	if ($_REQUEST["akcija"]=="edit") print '<input type="hidden" name="akcija" value="izmijeniknjigu">';
+	else print '<input type="hidden" name="akcija" value="dodajknjigu">';
 ?>
 	Naslov:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="naslov" size="50" value="<?=$naslov?>"><br>
 	Podnaslov:<input type="text" name="podnaslov" size="50" value="<?=$podnaslov?>"><br>
