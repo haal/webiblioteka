@@ -22,10 +22,20 @@ if ($_REQUEST['akcija'] == 'dodajknjigu') {
 	$broj = intval($_POST['broj']);
 	$vrijeme = time();
 	
+//Provjera ispravnosti
+	if ($broj<=0){
+		niceerror("Broj primjeraka mora biti veci od nule");
+		return 0;
+	}
+	if ($godina<=0 || $godina>=2009){
+		niceerror("Neispravna godina izdavanja knjige");
+		return 0;
+	}
+
 	$q01 = myquery("INSERT INTO knjigaopis ( Naslov, Podnaslov, ISBN, Izdanje, Opis, Jezik, GodinaIzdavanja, DatumUlaza, idZanr, BrojPrimjeraka)
 	VALUES ('$naslov','$podnaslov','$isbn', '$izdanje', '$opis', '$jezik', '$godina', FROM_UNIXTIME('$vrijeme') ,'$zanr', '$broj')");
 	
-	$q02 = myquery("SELECT idKnjigaOpis FROM knjigaopis WHERE isbn=$isbn"); //upit koji nam daje id knjige koju dodajemo, potreban zbog umetanja u tabelu pisac
+	$q02 = myquery("SELECT idKnjigaOpis FROM knjigaopis WHERE isbn='$isbn'"); //upit koji nam daje id knjige koju dodajemo, potreban zbog umetanja u tabelu pisac
 	
 	$knjiga = mysql_result($q02,0,0);
 	$insert = myquery("INSERT INTO pisac ( idAutor, idKnjigaOpis ) VALUES ( '$autor', '$knjiga' )");
@@ -86,8 +96,10 @@ if($knjiga){
 		niceerror("Neispravna godina izdavanja knjige");
 		return 0;
 	}
-		$sqlUpdate="UPDATE knjigaopis SET naslov='$naslov' , podnaslov='$podnaslov' , isbn='$isbn', izdanje='$izdanje', opis='$opis', jezik='$jezik', godinaizdavanja='$godina', idzanr='$zanr', brojprimjeraka='$broj' WHERE idknjigaopis='$knjiga'";
-		$q05=myquery($sqlUpdate);
+		$sqlUpdate1="UPDATE knjigaopis SET naslov='$naslov' , podnaslov='$podnaslov' , isbn='$isbn', izdanje='$izdanje', opis='$opis', jezik='$jezik', godinaizdavanja='$godina', idzanr='$zanr', brojprimjeraka='$broj' WHERE idknjigaopis='$knjiga'";
+		$q05=myquery($sqlUpdate1);
+		$sqlUpdate2="UPDATE pisac SET idknjigaopis='$knjiga', idautor='$autor' WHERE idknjigaopis='$knjiga'";
+		$q06=myquery($sqlUpdate2);
 		
 }
 ?>
@@ -140,10 +152,10 @@ while ($knjiga=mysql_fetch_row($q01)) {
 ?>
 	<tr>
 	<td><? print "$brojac"; ?></td>
-	<td><?=$knjiga[1]; ?></td>
+	<td><a href="?sta=admin/primjerak&knjiga=<?php echo $knjiga[0];?> "><?=$knjiga[1]; ?></a></td>
 	<td align="center">
 			<a href="?sta=admin/knjige&akcija=ukloni&knjiga=<?php echo $knjiga[0];?> ">Ukloni</a>&nbsp;&nbsp;&nbsp;
-			<a href="?sta=admin/knjige&akcija=edit&knjiga=<?php echo $knjiga[0];?> ">Edituj</a>
+			<a href="?sta=admin/knjige&akcija=edit&knjiga=<?php echo $knjiga[0];?> ">Edituj</a></td>	
 	</tr>
 
 <?php
@@ -152,8 +164,8 @@ $brojac++;
 
 print "</table>";
 
-if($brojac==1) print "<p><font color=\"#FF0000\">Trenutno nema knjiga u bazi podataka.</font></p>";
-
+if($brojac==1) print "<p><font color=\"#FF0000\">Trenutno nema knjiga u bazi podataka.</font></p><br>";
+print "<br><p><font color=\"#FF0000\">Napomena: Za prikaz primjeraka neke knjige kliknuti na naslov knjige u tabeli</font></p>";
 
 
 
