@@ -18,6 +18,11 @@ if ($_REQUEST['akcija'] == 'premjestiprimjerak') {
 		$sqlUpdate="UPDATE primjerakknjige SET idposlovnica='$poslovnica' WHERE idprimjerakknjige='$k[0]'";
 		$q02=myquery($sqlUpdate);
 	}
+?>
+		<script language="JavaScript">
+		window.location="?sta=admin/primjerak&knjiga=<?=$knjiga;?>";
+		</script>
+<?
 	
 }
 	
