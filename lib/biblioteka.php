@@ -71,9 +71,6 @@ function bibliotekar_meni($fj) {
 		<td align="left">
 		&nbsp;&nbsp;<big><b>Bibliotekar</b></big>
 		</td>
-		<td align="left">
-		<? print $userid;?>
-		</td>
 	</tr>
 	<tr>
 		<td align="left">
