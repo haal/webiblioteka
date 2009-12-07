@@ -12,6 +12,12 @@ function public_intro() {
 			<?
 				login_forma();
 			?>
+			</td>
+			</tr>
+			<tr><td>
+			<?
+				zadnje_obavijesti();
+			?>
 			</td></tr>
 			
 		</table>
@@ -45,7 +51,9 @@ function login_forma() {
 			<tr><td>Korisnicko ime:</td><td><input type="text" name="login" size="15"></td></tr>
 			<tr><td>Sifra:</td><td><input type="password" name="pass" size="15"></td></tr>
 			<tr></tr><tr></tr>
-			<tr><td colspan="2" align="center"><input type="submit" value="Kreni"></td></tr></table>
+			<tr><td colspan="2" align="center"><input type="submit" value="Kreni"></td></tr>
+			<tr></tr>
+			<tr><td colspan="2" align="center"><a href="public/registracija.php">Registracija</td></tr></table>
 		</form>
 		</td>
 	</tr>
@@ -53,4 +61,22 @@ function login_forma() {
 	<?
 }
 
+?>
+<?
+function zadnje_obavijesti() {
+	
+	require("lib/config.php");
+
+	dbconnect($conf_dbhost,$conf_dbuser,$conf_dbpass,$conf_dbdb);
+	
+	$q01 = myquery("SELECT o.idObavijest, o.naslov, o.datum, p.naziv, o.tekst FROM obavijest o, poslovnica p WHERE o.idPoslovnica=p.idPoslovnica");
+	
+	$brojac=1;
+
+	while ($obavijest=mysql_fetch_row($q01)) {
+		print "<b>".$obavijest[3]." - ".$obavijest[1]."</b><br>".$obavijest[2]."<br>".$obavijest[4]."<br><br><br>";
+	}
+	//print "<b>Prva obavijest</b><br>Tekst same obavijesti<br>";
+	//print "<b>Druga obavijest</b><br>Tekst same obavijesti<br>";
+}
 ?>
