@@ -11,11 +11,11 @@ if ($_REQUEST['akcija'] == 'dodajobavijest') {
 	
 	$naslov = my_escape($_POST['naslov']);
 	$tekst = my_escape($_POST['tekst']);
-	$datum = date("d-m-y");
+	$datum = date("y-m-d");
 	$osoba = intval($_POST['osoba']);	//idOsoba
 	$poslovnica = intval($_POST['poslovnica']);	//idPoslovnica
 	
-$q011 = myquery("INSERT INTO obavijest ( Naslov, Tekst, Datum, idOsoba, idPoslovnica) VALUES ('$naslov','$tekst', DATE_FORMAT('$datum', '%d-%m-%Y'), '$osoba', '$poslovnica'");
+$q011 = myquery("INSERT INTO obavijest ( Naslov, Tekst, Datum, idOsoba, idPoslovnica) VALUES ('$naslov','$tekst', '$datum', '$userid', '$poslovnica')");
 
 $q02 = myquery("SELECT idObavijest FROM obavijest ORDER BY datum LIMIT 1"); //upit koji nam daje id obavijesti koju dodajemo, potreban kasnije
 $obavijest=mysql_result($q02,0,0);
@@ -51,12 +51,12 @@ if($obavijest){
 
 	$naslov = my_escape($_POST['naslov']);
 	$tekst = my_escape($_POST['tekst']);
-	$datum = my_escape($_POST['datum']);
+	$datum = date("y-m-d");
 	$osoba = my_escape($_POST['osoba']);
 	$poslovnica = intval($_POST['poslovnica']);
 	
    
-		$sqlUpdate1="UPDATE obavijest SET naslov='$naslov' , tekst='$tekst' , datum='$datum', idOsoba='$osoba', idPoslovnica='$poslovnica' WHERE idobavijest='$obavijest'";
+		$sqlUpdate1="UPDATE obavijest SET naslov='$naslov' , tekst='$tekst' , datum='$datum', idPoslovnica='$poslovnica' WHERE idobavijest='$obavijest'";
 		$q05=myquery($sqlUpdate1);
 	
 }
@@ -145,7 +145,6 @@ $q02 = myquery("SELECT idPoslovnica, naziv FROM poslovnica");
 ?>
 	Naslov:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="naslov" size="50" value="<?=$naslov?>"><br>
 	Tekst:<br><textarea name="tekst" cols="50" rows="10" ><?=$tekst?></textarea><br><br>
-	Datum: <input type="text" name="datum" size="10" value="<?=$datum?>"><br>
 	Poslovnica: &nbsp;<select name="poslovnica" class="default"><?
 	while ($r02=mysql_fetch_row($q02)) {
 		print "<option value=\"$r02[0]\"";
