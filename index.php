@@ -61,6 +61,10 @@ if ($userid>0) {
 	}
 }
 
+//sesija - haris dodao
+session_start();
+$_SESSION['userid'] = $userid;
+
 
 
 // Pronalazenje trazenog modula u registryju
