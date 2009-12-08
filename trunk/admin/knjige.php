@@ -19,21 +19,16 @@ if ($_REQUEST['akcija'] == 'dodajknjigu') {
 	$opis = my_escape($_POST['opis']);
 	$zanr = intval($_POST['zanr']);		//idZanr
 	$autor = intval($_POST['autor']);	//idAutor
-	$broj = intval($_POST['broj']);
 	$vrijeme = time();
 	
 //Provjera ispravnosti
-	if ($broj<=0){
-		niceerror("Broj primjeraka mora biti veci od nule");
-		return 0;
-	}
 	if ($godina<=0 || $godina>=2009){
 		niceerror("Neispravna godina izdavanja knjige");
 		return 0;
 	}
 
-	$q01 = myquery("INSERT INTO knjigaopis ( Naslov, Podnaslov, ISBN, Izdanje, Opis, Jezik, GodinaIzdavanja, DatumUlaza, idZanr, BrojPrimjeraka)
-	VALUES ('$naslov','$podnaslov','$isbn', '$izdanje', '$opis', '$jezik', '$godina', FROM_UNIXTIME('$vrijeme') ,'$zanr', '$broj')");
+	$q01 = myquery("INSERT INTO knjigaopis ( Naslov, Podnaslov, ISBN, Izdanje, Opis, Jezik, GodinaIzdavanja, DatumUlaza, idZanr)
+	VALUES ('$naslov','$podnaslov','$isbn', '$izdanje', '$opis', '$jezik', '$godina', FROM_UNIXTIME('$vrijeme') ,'$zanr')");
 	
 	$q02 = myquery("SELECT idKnjigaOpis FROM knjigaopis WHERE isbn='$isbn'"); //upit koji nam daje id knjige koju dodajemo, potreban zbog umetanja u tabelu pisac
 	
@@ -53,7 +48,7 @@ if ($_REQUEST['akcija'] == 'dodajknjigu') {
 if ($_REQUEST["akcija"]=="edit")
 {
 	if ($knjiga) {	
-	$q03=myquery("SELECT naslov, podnaslov, isbn, izdanje, opis, jezik, godinaizdavanja, idzanr, brojprimjeraka
+	$q03=myquery("SELECT naslov, podnaslov, isbn, izdanje, opis, jezik, godinaizdavanja, idzanr
 				  FROM knjigaopis WHERE idKnjigaOpis=$knjiga");
 	$q04=myquery("SELECT idAutor FROM pisac WHERE idKnjigaOpis=$knjiga");
 	$naslov = mysql_result($q03,0,0);
@@ -64,7 +59,6 @@ if ($_REQUEST["akcija"]=="edit")
 	$jezik = mysql_result($q03,0,5);
 	$godina = mysql_result($q03,0,6);
 	$zanr = mysql_result($q03,0,7);
-	$broj = mysql_result($q03,0,8);
 	$autor = mysql_result($q04,0,0);
 	}
 
@@ -85,7 +79,6 @@ if($knjiga){
 	$opis = my_escape($_POST['opis']);
 	$zanr = intval($_POST['zanr']);
 	$autor = intval($_POST['autor']);
-	$broj = intval($_POST['broj']);
    
 //Provjera ispravnosti
 	if ($broj<=0){
@@ -96,7 +89,7 @@ if($knjiga){
 		niceerror("Neispravna godina izdavanja knjige");
 		return 0;
 	}
-		$sqlUpdate1="UPDATE knjigaopis SET naslov='$naslov' , podnaslov='$podnaslov' , isbn='$isbn', izdanje='$izdanje', opis='$opis', jezik='$jezik', godinaizdavanja='$godina', idzanr='$zanr', brojprimjeraka='$broj' WHERE idknjigaopis='$knjiga'";
+		$sqlUpdate1="UPDATE knjigaopis SET naslov='$naslov' , podnaslov='$podnaslov' , isbn='$isbn', izdanje='$izdanje', opis='$opis', jezik='$jezik', godinaizdavanja='$godina', idzanr='$zanr' WHERE idknjigaopis='$knjiga'";
 		$q05=myquery($sqlUpdate1);
 		$sqlUpdate2="UPDATE pisac SET idknjigaopis='$knjiga', idautor='$autor' WHERE idknjigaopis='$knjiga'";
 		$q06=myquery($sqlUpdate2);
@@ -206,7 +199,6 @@ $q03 = myquery("SELECT idZanr, naziv FROM zanr");
 	}
 	?></select><br><br>
 	Godina izdavanja:<input type="text" name="godina" size="2" value="<?=$godina?>"><br>
-	Broj primjeraka:&nbsp;<input type="text" name="broj" size="2" value="<?=$broj?>"><br>
 	<br>Opis:<br><br><textarea name="opis" cols="50" rows="10" ><?=$opis?></textarea><br><br>
 <?
 	if ($_REQUEST["akcija"]=="edit") print '<input type="submit" value="Potvrdi izmjene"  class="default"><br><br><a href="?sta=admin/knjige"><<< Nazad</a>';
