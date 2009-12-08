@@ -158,7 +158,6 @@ if ($greska != "") {
 // Poruka greške za modul
 if ($found != 1 && $sta != "") {
 	niceerror("Modul $sta još uvijek nije napravljen.");
-	zamgerlog("pristup nepostojecom modulu $sta",3);
 }
 
 
