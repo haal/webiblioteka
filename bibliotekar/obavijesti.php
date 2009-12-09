@@ -51,12 +51,12 @@ if($obavijest){
 
 	$naslov = my_escape($_POST['naslov']);
 	$tekst = my_escape($_POST['tekst']);
-	$datum = date("y-m-d");
+	//$datum = date("y-m-d");
 	$osoba = my_escape($_POST['osoba']);
 	$poslovnica = intval($_POST['poslovnica']);
 	
    
-		$sqlUpdate1="UPDATE obavijest SET naslov='$naslov' , tekst='$tekst' , datum='$datum', idPoslovnica='$poslovnica' WHERE idobavijest='$obavijest'";
+		$sqlUpdate1="UPDATE obavijest SET naslov='$naslov' , tekst='$tekst' , idPoslovnica='$poslovnica' WHERE idobavijest='$obavijest'";
 		$q05=myquery($sqlUpdate1);
 	
 }
