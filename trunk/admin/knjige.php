@@ -81,10 +81,6 @@ if($knjiga){
 	$autor = intval($_POST['autor']);
    
 //Provjera ispravnosti
-	if ($broj<=0){
-		niceerror("Broj primjeraka mora biti veci od nule");
-		return 0;
-	}
 	if ($godina<=0 || $godina>=2009){
 		niceerror("Neispravna godina izdavanja knjige");
 		return 0;
