@@ -1,14 +1,14 @@
 <?
 
-function admin_bibliotekari() {
+function admin_clanovi() {
 
 global $userid;
 
-$bibliotekar = intval($_REQUEST['bibliotekar']);
+$clan = intval($_REQUEST['clan']);
 
 
-//dodavanje novog bibliotekara
-if ($_REQUEST['akcija'] == 'dodajbibliotekara') {
+//dodavanje novog clana
+if ($_REQUEST['akcija'] == 'dodajclana') {
 	
 	$ime = my_escape($_POST['ime']);
 	$prezime = my_escape($_POST['prezime']);
@@ -28,11 +28,11 @@ if ($_REQUEST['akcija'] == 'dodajbibliotekara') {
 	$auth = mysql_result($q02,0,0);
 
 	$q03 = myquery("INSERT INTO osoba ( Ime, Prezime, JMBG, UlicaIBroj, PostanskiBroj, Grad, Telefon, email, idtiposobe, idauth, idposlovnica)
-	VALUES ('$ime', '$prezime', '$jmbg', '$adresa', '$pbroj', '$grad', '$telefon', '$email', 2, '$auth', '$poslovnica')");
+	VALUES ('$ime', '$prezime', '$jmbg', '$adresa', '$pbroj', '$grad', '$telefon', '$email', 3, '$auth', '$poslovnica')");
 	
 ?>
 	<script language="JavaScript">
-		window.location="?sta=admin/bibliotekari";
+		window.location="?sta=admin/clanovi";
 	</script>
 <?
 }
@@ -42,9 +42,9 @@ if ($_REQUEST['akcija'] == 'dodajbibliotekara') {
 //u ovoj akciji se samo iz baze podataka uzimaju vrijednosti
 if ($_REQUEST["akcija"]=="edit")
 {
-	if ($bibliotekar) {	
+	if ($clan) {	
 	$q04=myquery("SELECT Ime, Prezime, jmbg, UlicaIBroj, PostanskiBroj, Grad, Telefon, email, idposlovnica, idauth
-				  FROM osoba WHERE idosoba=$bibliotekar");
+				  FROM osoba WHERE idosoba=$clan");
 	$ime = mysql_result($q04,0,0);
 	$prezime = mysql_result($q04,0,1);
 	$jmbg = mysql_result($q04,0,2);
@@ -55,9 +55,10 @@ if ($_REQUEST["akcija"]=="edit")
 	$email = mysql_result($q04,0,7);
 	$poslovnica = mysql_result($q04,0,8);
 	$auth = mysql_result($q04,0,9);
-	$q05=myquery("SELECT korisnickoime, sifra FROM auth WHERE idauth=$auth");
+	$q05=myquery("SELECT korisnickoime, sifra, odobren FROM auth WHERE idauth=$auth");
 	$username = mysql_result($q05,0,0);
 	$pass = mysql_result($q05,0,1);
+	$odobren = mysql_result($q05,0,2);
 	}
 
 }
@@ -65,22 +66,28 @@ if ($_REQUEST["akcija"]=="edit")
 // akcija brisanja
 if ($_REQUEST["akcija"]=="ukloni")
 {
-	if ($bibliotekar) {
-	$delete="DELETE FROM osoba WHERE idosoba=" . $bibliotekar;
-	myquery($delete);
+	if ($clan) {
+	$q12 = myquery("SELECT idauth FROM osoba WHERE idosoba=$clan");
+	$auth = mysql_result($q12,0,0);
+	
+	$delete1="DELETE FROM osoba WHERE idosoba=" . $clan;
+	myquery($delete1);
+	
+	$delete2="DELETE FROM auth WHERE idauth=" . $auth;
+	myquery($delete2);
 	}
 ?>
 	<script language="JavaScript">
-		window.location="?sta=admin/bibliotekari";
+		window.location="?sta=admin/clanovi";
 	</script>
 <?
 }
 
 
 //akcija koja upisuje u bazu podatke s forme, vrsi konkretne promjene, dok akcija "edit" samo uzima podatke iz baze i stavlja ih na formu
-if ($_REQUEST['akcija'] == 'izmijenibibliotekara') {
+if ($_REQUEST['akcija'] == 'izmijeniclana') {
 
-if($bibliotekar){
+if($clan){
 
 	$ime = my_escape($_POST['ime']);
 	$prezime = my_escape($_POST['prezime']);
@@ -95,29 +102,29 @@ if($bibliotekar){
 	$odobren = intval($_POST['odobren']);
 	$poslovnica = intval($_POST['poslovnica']);
    
-	$sqlUpdate1="UPDATE osoba SET ime='$ime' ,prezime='$prezime' ,jmbg='$jmbg' , UlicaIBroj='$adresa' , postanskibroj='$pbroj', grad='$grad', telefon='$telefon', email='$email', idposlovnica='$poslovnica' WHERE idosoba='$bibliotekar'";
+	$sqlUpdate1="UPDATE osoba SET ime='$ime' ,prezime='$prezime' ,jmbg='$jmbg' , UlicaIBroj='$adresa' , postanskibroj='$pbroj', grad='$grad', telefon='$telefon', email='$email', idposlovnica='$poslovnica' WHERE idosoba='$clan'";
 	$q06=myquery($sqlUpdate1);//update u tabeli osoba
 	
-	$q11 = myquery("SELECT idauth FROM osoba WHERE idosoba='$bibliotekar'");
+	$q11 = myquery("SELECT idauth FROM osoba WHERE idosoba='$clan'");
 	$auth = mysql_result($q11,0,0);//ovim upitom trazimo vezu izmedju tabela auth i osoba, treba nam za update username i pass
 	
-	$sqlUpdate2="UPDATE auth SET korisnickoime='$username', sifra='$pass' WHERE idauth='$auth'";//update username i pass
+	$sqlUpdate2="UPDATE auth SET korisnickoime='$username', sifra='$pass', odobren='$odobren' WHERE idauth='$auth'";//update username i pass
 	$q07=myquery($sqlUpdate2);
 		
 }
 ?>
 		<script language="JavaScript">
-		window.location="?sta=admin/bibliotekari";
+		window.location="?sta=admin/clanovi";
 		</script>
 <?
 }
 
 
-//kod tabele koja prikazuje sve bibliotekare
-$q08 = myquery("SELECT idOsoba, ime, prezime FROM osoba WHERE idtiposobe=2");
+//kod tabele koja prikazuje sve clanove
+$q08 = myquery("SELECT idOsoba, ime, prezime FROM osoba WHERE idtiposobe=3");
 
 ?>
-<b>Bibliotekari koji su trenutno registrovani:</b><br><br>
+<b>Clanovi koji su trenutno registrovani:</b><br><br>
 <table width="420" border="1" cellpadding="1" cellspacing="1" bordercolor="#000000">
 	<tr>
 	<td align="center" width=20><b>R.br.</b></td>
@@ -128,14 +135,14 @@ $q08 = myquery("SELECT idOsoba, ime, prezime FROM osoba WHERE idtiposobe=2");
 <?php
 $brojac=1;
 
-while ($bibliotekar=mysql_fetch_row($q08)) {
+while ($clan=mysql_fetch_row($q08)) {
 ?>
 	
 	<tr>
 	<td align="center"><? print "$brojac"; ?></td>
-	<td align="center"><? print $bibliotekar[1] . " " . $bibliotekar[2]; ?></td>
+	<td align="center"><? print $clan[1] . " " . $clan[2]; ?></td>
 	<td align="center">
-	<a href="?sta=admin/bibliotekari&akcija=ukloni&bibliotekar=<?=$bibliotekar[0];?>">Ukloni</a>&nbsp;&nbsp;&nbsp;<a href="?sta=admin/bibliotekari&akcija=edit&bibliotekar=<?=$bibliotekar[0];?>">Edituj</a>	
+	<a href="?sta=admin/clanovi&akcija=ukloni&clan=<?=$clan[0];?>">Ukloni</a>&nbsp;&nbsp;&nbsp;<a href="?sta=admin/clanovi&akcija=edit&clan=<?=$clan[0];?>">Edituj</a>	
 	</td></tr>
 
 <?
@@ -143,18 +150,14 @@ while ($bibliotekar=mysql_fetch_row($q08)) {
 }
 
 print "</table><br>";
-if($brojac==1) print "<p><font color=\"#FF0000\">Trenutno nema registrovanih bibliotekara.</font></p><br>";
+if($brojac==1) print "<p><font color=\"#FF0000\">Trenutno nema registrovanih clanova.</font></p><br>";
 print "<hr><br>";
 	
-	$q09 = myquery("SELECT idPoslovnica, naziv FROM poslovnica");	
-	if (($_REQUEST["akcija"]=="edit") && ($bibliotekar)){
-	$q10 = myquery("SELECT a.odobren FROM auth as a, osoba as o WHERE o.idauth=a.idauth AND o.idosoba=$bibliotekar");
-	$odobren = mysql_result($q10,0,0);
-	}
+	$q09 = myquery("SELECT idPoslovnica, naziv FROM poslovnica");
 
     print genform("POST");
-	if ($_REQUEST["akcija"]=="edit") print '<input type="hidden" name="akcija" value="izmijenibibliotekara">';
-	else print '<input type="hidden" name="akcija" value="dodajbibliotekara">';
+	if ($_REQUEST["akcija"]=="edit") print '<input type="hidden" name="akcija" value="izmijeniclana">';
+	else print '<input type="hidden" name="akcija" value="dodajclana">';
 ?>
 	Ime:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="ime" size="30" value="<?=$ime?>"><br>
 	Prezime:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="prezime" size="30" value="<?=$prezime?>"><br>
@@ -175,15 +178,18 @@ print "<hr><br>";
 	Korisnicko ime:<input type="text" name="username" size="20" value="<?=$username?>"><br>
 	Sifra:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="pass" size="20" value="<?=$pass?>"><br><br>
 	Odobren:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="odobren" class="default"><?
-		print "<option value=\"1\"";
-		if (($_REQUEST["akcija"]=="edit") && ($odobren==1)) print " selected";
+		print "<option value=";
+		print "0";
+		print ">NE</option>";
+		print "<option value=";
+		print "1";
+		if ((!$clan) && ($odobren==1)) print " selected";
 		print ">DA</option>";
-		print "<option value=\"0\">NE</option>";
 	?></select><br><br>
 <?
 	if ($_REQUEST["akcija"]=="edit") print '<input type="submit" value="Potvrdi izmjene"  class="default">
-	<br><br><a href="?sta=admin/bibliotekari">Unos novog bibliotekara</a>';
-	else print '<input type="submit" value="Dodaj bibliotekara"  class="default">';
+	<br><br><a href="?sta=admin/clanovi">Unos novog clana</a>';
+	else print '<input type="submit" value="Dodaj clana"  class="default">';
 ?>
 </form>
 
