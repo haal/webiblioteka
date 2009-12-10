@@ -11,7 +11,7 @@ array("public/intro", "Login", "Login", "P"),
 
 array("admin/intro", "Admin", "Admin", "A"),
 array("admin/knjige", "Upravljanje knjigama", "Admin - Knjige", "A"),
-array("admin/clanovi", "Upravljanje clanovima", "Admin - Clanovi", "A"),
+array("admin/clan", "Upravljanje clanovima", "Admin - Clanovi", "A"),
 array("admin/poslovnice", "Upravljanje poslovnicama", "Admin - Poslovnice", "A"),
 array("admin/primjerak", "Upravljanje primjercima knjige", "Admin - Primjerak knjige", "A"),
 array("admin/bibliotekari", "Upravljanje bibliotekarima", "Admin - Bibliotekari", "A"),
