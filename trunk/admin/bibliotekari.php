@@ -55,9 +55,10 @@ if ($_REQUEST["akcija"]=="edit")
 	$email = mysql_result($q04,0,7);
 	$poslovnica = mysql_result($q04,0,8);
 	$auth = mysql_result($q04,0,9);
-	$q05=myquery("SELECT korisnickoime, sifra FROM auth WHERE idauth=$auth");
+	$q05=myquery("SELECT korisnickoime, sifra, odobren FROM auth WHERE idauth=$auth");
 	$username = mysql_result($q05,0,0);
 	$pass = mysql_result($q05,0,1);
+	$odobren = mysql_result($q05,0,2);
 	}
 
 }
@@ -66,8 +67,14 @@ if ($_REQUEST["akcija"]=="edit")
 if ($_REQUEST["akcija"]=="ukloni")
 {
 	if ($bibliotekar) {
-	$delete="DELETE FROM osoba WHERE idosoba=" . $bibliotekar;
-	myquery($delete);
+	$q12 = myquery("SELECT idauth FROM osoba WHERE idosoba=$bibliotekar");
+	$auth = mysql_result($q12,0,0);
+	
+	$delete1="DELETE FROM osoba WHERE idosoba=" . $bibliotekar;
+	myquery($delete1);
+	
+	$delete2="DELETE FROM auth WHERE idauth=" . $auth;
+	myquery($delete2);
 	}
 ?>
 	<script language="JavaScript">
@@ -101,7 +108,7 @@ if($bibliotekar){
 	$q11 = myquery("SELECT idauth FROM osoba WHERE idosoba='$bibliotekar'");
 	$auth = mysql_result($q11,0,0);//ovim upitom trazimo vezu izmedju tabela auth i osoba, treba nam za update username i pass
 	
-	$sqlUpdate2="UPDATE auth SET korisnickoime='$username', sifra='$pass' WHERE idauth='$auth'";//update username i pass
+	$sqlUpdate2="UPDATE auth SET korisnickoime='$username', sifra='$pass', odobren='$odobren' WHERE idauth='$auth'";//update username i pass
 	$q07=myquery($sqlUpdate2);
 		
 }
@@ -147,10 +154,6 @@ if($brojac==1) print "<p><font color=\"#FF0000\">Trenutno nema registrovanih bib
 print "<hr><br>";
 	
 	$q09 = myquery("SELECT idPoslovnica, naziv FROM poslovnica");	
-	if (($_REQUEST["akcija"]=="edit") && ($bibliotekar)){
-	$q10 = myquery("SELECT a.odobren FROM auth as a, osoba as o WHERE o.idauth=a.idauth AND o.idosoba=$bibliotekar");
-	$odobren = mysql_result($q10,0,0);
-	}
 
     print genform("POST");
 	if ($_REQUEST["akcija"]=="edit") print '<input type="hidden" name="akcija" value="izmijenibibliotekara">';
@@ -175,10 +178,13 @@ print "<hr><br>";
 	Korisnicko ime:<input type="text" name="username" size="20" value="<?=$username?>"><br>
 	Sifra:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="pass" size="20" value="<?=$pass?>"><br><br>
 	Odobren:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="odobren" class="default"><?
-		print "<option value=\"1\"";
-		if (($_REQUEST["akcija"]=="edit") && ($odobren==1)) print " selected";
+		print "<option value=";
+		print "0";
+		print ">NE</option>";
+		print "<option value=";
+		print "1";
+		if ((!$bibliotekar) && ($odobren==1)) print " selected";
 		print ">DA</option>";
-		print "<option value=\"0\">NE</option>";
 	?></select><br><br>
 <?
 	if ($_REQUEST["akcija"]=="edit") print '<input type="submit" value="Potvrdi izmjene"  class="default">
