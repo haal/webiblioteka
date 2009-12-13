@@ -13,7 +13,7 @@ $conf_files_path = "/srv/httpd/biblioteka";
 $conf_script_path = "/srv/httpd/biblioteka/www";
 
 $conf_appname = "WEBIBLIOTEKA";
-$conf_appversion = "1.0";
+$conf_appversion = "0.1";
 
 $conf_system_auth = "table";
 
