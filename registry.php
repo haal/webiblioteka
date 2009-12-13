@@ -27,7 +27,8 @@ array("bibliotekar/knjige", "Upravljanje knjigama", "Bibliotekar - Knjige", "B")
 array("bibliotekar/obavijesti", "Upravljanje obavijestima", "Bibliotekar - Obavijesti", "B"),
 
 
-array("clan/intro", "Clan", "Clan", "C")
+array("clan/intro", "Clan", "Clan", "C"),
+array("clan/knjige", "Pretraga knjiga", "Knjige", "C")
 
 );
 

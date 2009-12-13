@@ -190,6 +190,8 @@ if (strstr($sta,"bibliotekar/"))
 	bibliotekar_meni("$staf();");
 else if (strstr($sta,"admin/"))
 	admin_meni("$staf();");
+else if (strstr($sta,"clan/"))
+	clan_meni("$staf();");
 else
 	eval("$staf();");
 	
