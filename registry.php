@@ -17,6 +17,7 @@ array("admin/primjerak", "Upravljanje primjercima knjige", "Admin - Primjerak kn
 array("admin/bibliotekari", "Upravljanje bibliotekarima", "Admin - Bibliotekari", "A"),
 array("admin/clanovi", "Upravljanje clanovima", "Admin - Clanovi", "A"),
 array("admin/zanrovi", "Upravljanje zanrovima", "Admin - Zanrovi", "A"),
+array("admin/autori", "Upravljanje autorima", "Admin - Autori", "A"),
 
 
 

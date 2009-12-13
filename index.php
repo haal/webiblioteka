@@ -62,8 +62,8 @@ if ($userid>0) {
 }
 
 //sesija - haris dodao
-session_start();
-$_SESSION['userid'] = $userid;
+//session_start();
+//$_SESSION['userid'] = $userid;
 
 
 
