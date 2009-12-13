@@ -22,7 +22,7 @@ x6. Dodati polje Zanr->Opis
 
 8. ISBN broj ne smije biti već unesen
 
-9. Dvije veze između tabela Osoba i Iznajmljivanje
+x9. Dvije veze između tabela Osoba i Iznajmljivanje
    - bibliotekar (kada korisnik na standardan način iznajmljuje knjigu)
 
    - član (kada korisnik iznajmljuje putem interneta)
