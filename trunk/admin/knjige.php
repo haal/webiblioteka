@@ -176,9 +176,9 @@ $q03 = myquery("SELECT idZanr, naziv FROM zanr");
 ?>
 	Naslov:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="naslov" size="50" value="<?=$naslov?>"><br>
 	Podnaslov:<input type="text" name="podnaslov" size="50" value="<?=$podnaslov?>"><br>
-	ISBN:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="isbn" size="13" value="<?=$isbn?>"><br>
+	ISBN:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="isbn" size="13" maxlength="13" value="<?=$isbn?>"><br>
 	Izdanje:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="izdanje" size="5" value="<?=$izdanje?>"><br>
-	Jezik:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="jezik" size="20" value="<?=$jezik?>"><br><br>
+	Jezik:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="jezik" size="13" value="<?=$jezik?>"><br><br>
 	Pisac:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="autor" class="default"><?
 	while ($r02=mysql_fetch_row($q02)) {
 		$temp=$r02[1]." ".$r02[2];
@@ -194,7 +194,7 @@ $q03 = myquery("SELECT idZanr, naziv FROM zanr");
 		print ">$r03[1]</option>";
 	}
 	?></select><br><br>
-	Godina izdavanja:<input type="text" name="godina" size="2" value="<?=$godina?>"><br>
+	Godina izdavanja:<input type="text" name="godina" size="4" maxlength="4" value="<?=$godina?>"><br>
 	<br>Opis:<br><br><textarea name="opis" cols="50" rows="10" ><?=$opis?></textarea><br><br>
 <?
 	if ($_REQUEST["akcija"]=="edit") print '<input type="submit" value="Potvrdi izmjene"  class="default"><br><br><a href="?sta=admin/knjige"><<< Nazad</a>';

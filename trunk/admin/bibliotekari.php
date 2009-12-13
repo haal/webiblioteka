@@ -161,12 +161,12 @@ print "<hr><br>";
 ?>
 	Ime:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="ime" size="30" value="<?=$ime?>"><br>
 	Prezime:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="prezime" size="30" value="<?=$prezime?>"><br>
-	JMBG:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="jmbg" size="30" value="<?=$jmbg?>"><br>
+	JMBG:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="jmbg" size="13" maxlength="13" value="<?=$jmbg?>"><br>
 	Ulica i broj:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="adresa" size="50" value="<?=$adresa?>"><br>
-	Postanski broj:&nbsp;<input type="text" name="pbroj" size="20" value="<?=$pbroj?>"><br>
-	Grad:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="grad" size="5" value="<?=$grad?>"><br>
+	Postanski broj:&nbsp;<input type="text" name="pbroj" size="5" maxlength="5" value="<?=$pbroj?>"><br>
+	Grad:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="grad" size="30" value="<?=$grad?>"><br>
 	Telefon:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="telefon" size="20" value="<?=$telefon?>"><br>
-	email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="email" size="20" value="<?=$email?>">
+	E-mail:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="email" size="20" value="<?=$email?>">
 	<br><br>Poslovnica:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="poslovnica" class="default"><?
 	while ($r09=mysql_fetch_row($q09)) {
 		print "<option value=\"$r09[0]\"";

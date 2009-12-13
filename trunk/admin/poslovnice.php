@@ -133,11 +133,11 @@ if($brojac==1) print "<p><font color=\"#FF0000\">Trenutno nema registrovanih pos
 	else print '<input type="hidden" name="akcija" value="dodajposlovnicu">';
 ?>
 	Naziv:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="naziv" size="30" value="<?=$naziv?>"><br>
-	Ulica i broj:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="adresa" size="50" value="<?=$adresa?>"><br>
-	Postanski broj:&nbsp;<input type="text" name="pbroj" size="20" value="<?=$pbroj?>"><br>
-	Grad:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="grad" size="5" value="<?=$grad?>"><br>
-	Telefon:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="telefon" size="20" value="<?=$telefon?>"><br>
-	email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="email" size="20" value="<?=$email?>"><br><br>
+	Ulica i broj:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="adresa" size="30" value="<?=$adresa?>"><br>
+	Postanski broj:&nbsp;<input type="text" name="pbroj" size="5" maxlength="5" value="<?=$pbroj?>"><br>
+	Grad:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="grad" size="20" value="<?=$grad?>"><br>
+	Telefon:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="telefon" size="15" value="<?=$telefon?>"><br>
+	email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="email" size="30" value="<?=$email?>"><br><br>
 <?
 	if ($_REQUEST["akcija"]=="edit") print '<input type="submit" value="Potvrdi izmjene"  class="default">
 	<br><br><a href="?sta=admin/poslovnice">Nova poslovnica</a>';
