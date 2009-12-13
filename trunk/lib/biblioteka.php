@@ -42,6 +42,7 @@ function admin_meni($fj) {
 				<br><font size="-1" color="#00000">&nbsp;&nbsp;<a href="?sta=admin/poslovnice">POSLOVNICE</a>
 				<br>&nbsp;&nbsp;<a href="?sta=admin/knjige" >KNJIGE</a>
 				<br>&nbsp;&nbsp;<a href="?sta=admin/zanrovi" >ZANROVI</a>
+				<br>&nbsp;&nbsp;<a href="?sta=admin/autori" >AUTORI</a>
 				<br>&nbsp;&nbsp;<a href="?sta=admin/clanovi">CLANOVI</a>
 				<br>&nbsp;&nbsp;<a href="?sta=admin/bibliotekari">BIBLIOTEKARI</a>
 				<br><br>
