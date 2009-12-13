@@ -96,6 +96,45 @@ function bibliotekar_meni($fj) {
 	
 <?
 	
+}
+
+
+function clan_meni($fj) {
+
+	global $userid,$sta,$registry;	
+	
+?>
+
+	<table width="100%" border="0" cellspacing="4" cellpadding="4">
+	<tr>
+		<td align="left">
+		&nbsp;&nbsp;<big><b>Clan</b></big>
+		</td>
+	</tr>
+	<tr>
+		<td align="left">
+		<table border="0" width="100%">
+			<tr>
+				<td width="10%" valign="top" bgcolor="#FFFFFF">
+				<br><font size="-1" color="#00000">&nbsp;&nbsp;<a href="?sta=clan/knjige">KNJIGE</a>
+				<br>&nbsp;&nbsp;<a href="?sta=clan/stanje">STANJE RACUNA</a>
+				<br>&nbsp;&nbsp;<a href="?sta=clan/top10">TOP 10</a>
+				<br>&nbsp;&nbsp;<a href="?sta=clan/ocjene">OCJENE</a>
+				<br><br>
+				<br>&nbsp;&nbsp;<a href="?sta=logout">Logout</a></font><br><br>
+				</td>
+				<td width="4%"></td>
+				<td width="86%" valign="top" align="left">
+				<? eval($fj); ?>
+				</td>
+			</tr>
+		</table>		
+		</td>
+	</tr>
+	</table>
+	
+<?
+	
 }	
 	
 ?>
