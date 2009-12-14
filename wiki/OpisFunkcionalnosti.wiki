@@ -5,6 +5,7 @@ Dokument projekta sa detaljnim opisom funkcionalnosti se nalazi u Download sekci
 === Funkcionalnosti ===
 
 U idućoj listi se nalaze pobrojane funkcionalnosti
+
 RBr. Ime funkcionalnosti (tip pristupa) - status (osoba zaduzena za izradu)
 
  # Logovanje (svi) - ~~u izradi~~ - zavrseno
@@ -40,4 +41,4 @@ RBr. Ime funkcionalnosti (tip pristupa) - status (osoba zaduzena za izradu)
  # Iznajmljivanje knjige (clan) - u izradi (Heric)
  # Rezervacija (clan) - u izradi (Heric)
  # Registrovanje povrat knjige (bibliotekar) - u izradi
-
+ # Registrovanje putem interneta (svi) - u izradi
