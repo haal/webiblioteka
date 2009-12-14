@@ -151,5 +151,14 @@ function check_cookie() {
 	}
 }
 
+// Logging
+
+function bibliotekalog($event) {
+	global $userid;
+
+	if (intval($userid)==0) $userid=0;
+
+	myquery("insert into log set dogadjaj='".my_escape($event)."', userid=$userid");
+}
 
 ?>
