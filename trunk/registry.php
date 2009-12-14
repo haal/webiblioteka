@@ -8,6 +8,7 @@ $registry = array(
 #    A - admin, B - bibliotekar, C - clan, P - public
 
 array("public/intro", "Login", "Login", "P"),
+array("public/registracija", "Registracija", "Registracija", "P"),
 
 
 array("admin/intro", "Admin", "Admin", "A"),
@@ -19,6 +20,7 @@ array("admin/bibliotekari", "Upravljanje bibliotekarima", "Admin - Bibliotekari"
 array("admin/clanovi", "Upravljanje clanovima", "Admin - Clanovi", "A"),
 array("admin/zanrovi", "Upravljanje zanrovima", "Admin - Zanrovi", "A"),
 array("admin/autori", "Upravljanje autorima", "Admin - Autori", "A"),
+array("admin/biblioteka", "Editovanje informacija o biblioteci", "Admin - Biblioteka", "A"),
 
 
 
