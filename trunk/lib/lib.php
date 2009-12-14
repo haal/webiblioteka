@@ -145,7 +145,9 @@ function check_cookie() {
 
 	$q1 = myquery("select idAuth from auth where korisnickoIme='$login'");
 	if (mysql_num_rows($q1)>0) {
-		$userid = mysql_result($q1,0,0);
+		$auth = mysql_result($q1,0,0);
+		$q2 = myquery("select idosoba from osoba where idauth='$auth'");
+		$userid = mysql_result($q2,0,0);
 	}
 }
 
