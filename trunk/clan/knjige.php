@@ -16,12 +16,14 @@ if ($_REQUEST["akcija"]=="iznajmi")
 	$primjerak =mysql_result($q04,0,0);
 	$q03 = myquery("INSERT INTO iznajmljivanje (idOsobaClan, idosobabibliotekar, idPrimjerakKnjige, status) VALUES ('$userid',1,'$primjerak',0)");
 	$sqlUpdate = myquery("UPDATE primjerakknjige SET status=1 WHERE idprimjerakknjige='$primjerak'");
+	bibliotekalog("Iznajmljen primjerak, clan: $userid");
 	}
 ?>
 	<script language="JavaScript">
 		window.location="?sta=clan/knjige";
 	</script>
-<?
+<?	
+
 }
 
 
