@@ -119,7 +119,7 @@ function clan_meni($fj) {
 			<tr>
 				<td width="10%" valign="top" bgcolor="#FFFFFF">
 				<br><font size="-1" color="#00000">&nbsp;&nbsp;<a href="?sta=clan/knjige">KNJIGE</a>
-				<br>&nbsp;&nbsp;<a href="?sta=clan/stanje">STANJE RACUNA</a>
+				<br>&nbsp;&nbsp;<a href="?sta=clan/stanje">STATUS</a>
 				<br>&nbsp;&nbsp;<a href="?sta=clan/top10">TOP 10</a>
 				<br>&nbsp;&nbsp;<a href="?sta=clan/ocjene">OCJENE</a>
 				<br><br>
