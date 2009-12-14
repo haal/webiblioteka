@@ -61,14 +61,14 @@ if ($_REQUEST['akcija'] == 'trazi') {
 	$tippretrage = intval($_POST['tippretrage']);
 	
 	if($tippretrage==0)
-	$q01 = myquery("SELECT DISTINCT k.idknjigaopis, k.naslov, a.ime, a.prezime FROM knjigaopis as k, autor as a, pisac as p, primjerakknjige as pr WHERE upper(k.naslov) LIKE'%$vrijednost%' AND p.idknjigaopis=k.idknjigaopis AND p.idautor=a.idautor AND pr.idposlovnica=1 AND pr.idknjigaopis=k.idknjigaopis AND k.idknjigaopis NOT IN (SELECT pk.idknjigaopis FROM primjerakknjige as pk, iznajmljivanje as i WHERE i.idosobaclan=$userid AND i.idprimjerakknjige=pk.idprimjerakknjige )");
+	$q01 = myquery("SELECT k.idknjigaopis, k.naslov, a.ime, a.prezime FROM knjigaopis as k, autor as a, pisac as p WHERE upper(k.naslov) LIKE'%$vrijednost%' AND p.idautor=a.idautor AND p.idknjigaopis=k.idknjigaopis");
 	if($tippretrage==1)
-	$q01 = myquery("SELECT DISTINCT k.idknjigaopis, k.naslov, a.ime, a.prezime FROM knjigaopis as k, autor as a, pisac as p, primjerakknjige as pr WHERE upper(a.prezime) LIKE'%$vrijednost%' AND p.idknjigaopis=k.idknjigaopis AND p.idautor=a.idautor AND pr.idposlovnica=1 AND pr.idknjigaopis=k.idknjigaopis AND k.idknjigaopis NOT IN (SELECT pk.idknjigaopis FROM primjerakknjige as pk, iznajmljivanje as i WHERE i.idosobaclan=$userid AND i.idprimjerakknjige=pk.idprimjerakknjige");
+	$q01 = myquery("SELECT DISTINCT k.idknjigaopis, k.naslov, a.ime, a.prezime FROM knjigaopis as k, autor as a, pisac as p, primjerakknjige as pr WHERE upper(a.prezime) LIKE'%$vrijednost%' AND p.idknjigaopis=k.idknjigaopis AND p.idautor=a.idautor AND pr.idknjigaopis=k.idknjigaopis AND k.idknjigaopis NOT IN (SELECT pk.idknjigaopis FROM primjerakknjige as pk, iznajmljivanje as i WHERE i.idosobaclan=$userid AND i.idprimjerakknjige=pk.idprimjerakknjige");
 	if($tippretrage==2)
-	$q01 = myquery("SELECT DISTINCT k.idknjigaopis, k.naslov, a.ime, a.prezime FROM knjigaopis as k, autor as a, pisac as p, primjerakknjige as pr WHERE upper(a.ime) LIKE'%$vrijednost%' AND p.idknjigaopis=k.idknjigaopis AND p.idautor=a.idautor AND pr.idposlovnica=1 AND pr.idknjigaopis=k.idknjigaopis  AND k.idknjigaopis NOT IN (SELECT pk.idknjigaopis FROM primjerakknjige as pk, iznajmljivanje as i WHERE i.idosobaclan=$userid AND i.idprimjerakknjige=pk.idprimjerakknjige");
+	$q01 = myquery("SELECT DISTINCT k.idknjigaopis, k.naslov, a.ime, a.prezime FROM knjigaopis as k, autor as a, pisac as p, primjerakknjige as pr WHERE upper(a.ime) LIKE'%$vrijednost%' AND p.idknjigaopis=k.idknjigaopis AND p.idautor=a.idautor AND pr.idknjigaopis=k.idknjigaopis  AND k.idknjigaopis NOT IN (SELECT pk.idknjigaopis FROM primjerakknjige as pk, iznajmljivanje as i WHERE i.idosobaclan=$userid AND i.idprimjerakknjige=pk.idprimjerakknjige");
 	
-	$temp=mysql_fetch_row($q01);
-	if($temp){
+	$temp=mysql_num_rows($q01);
+	if($temp>0){
 	
 ?>
 	<table width=720" border="1" cellpadding="1" cellspacing="1" bordercolor="#000000">
@@ -87,7 +87,7 @@ $brojac=1;
 
 while ($knjiga=mysql_fetch_row($q01)) {
 	
-	$q02 = myquery("SELECT COUNT(*) FROM primjerakknjige WHERE idknjigaopis=$knjiga[0] AND status=0");
+	$q02 = myquery("SELECT COUNT(*) FROM primjerakknjige WHERE idknjigaopis=$knjiga[0] AND status=0 AND idposlovnica=1");
 	$broj = mysql_result($q02,0,0);//broj slobodnih primjeraka
 ?>
 	<tr>
