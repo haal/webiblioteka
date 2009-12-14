@@ -8,7 +8,7 @@ $knjiga = intval($_REQUEST['knjiga']);
 
 
 
-// akcija brisanja knjige - opcija "ukloni"
+// akcija iznajmljivanja knjige
 if ($_REQUEST["akcija"]=="iznajmi")
 {
 	if ($knjiga) {
@@ -16,7 +16,7 @@ if ($_REQUEST["akcija"]=="iznajmi")
 	$primjerak =mysql_result($q04,0,0);
 	$q03 = myquery("INSERT INTO iznajmljivanje (idOsobaClan, idosobabibliotekar, idPrimjerakKnjige, status) VALUES ('$userid',1,'$primjerak',0)");
 	$sqlUpdate = myquery("UPDATE primjerakknjige SET status=1 WHERE idprimjerakknjige='$primjerak'");
-	bibliotekalog("Iznajmljen primjerak, clan: $userid");
+	bibliotekalog("Iznajmljen primjerak");
 	}
 ?>
 	<script language="JavaScript">
@@ -26,6 +26,20 @@ if ($_REQUEST["akcija"]=="iznajmi")
 
 }
 
+// akcija rezervisanja knjige
+if ($_REQUEST["akcija"]=="rezervisi")
+{
+	if ($knjiga) {
+	$q03 = myquery("INSERT INTO rezervacija (Osoba_idOsoba, KnjigaOpis_idKnjigaOpis, status) VALUES ('$userid','$knjiga',0)");
+	bibliotekalog("Primjerak rezervisan");
+	}
+?>
+	<script language="JavaScript">
+		window.location="?sta=clan/knjige";
+	</script>
+<?	
+
+}
 
 
 //forma - tabela i "search" dio
@@ -61,11 +75,11 @@ if ($_REQUEST['akcija'] == 'trazi') {
 	$tippretrage = intval($_POST['tippretrage']);
 	
 	if($tippretrage==0)
-	$q01 = myquery("SELECT k.idknjigaopis, k.naslov, a.ime, a.prezime FROM knjigaopis as k, autor as a, pisac as p WHERE upper(k.naslov) LIKE'%$vrijednost%' AND p.idautor=a.idautor AND p.idknjigaopis=k.idknjigaopis");
+	$q01 = myquery("SELECT k.idknjigaopis, k.naslov, a.ime, a.prezime FROM knjigaopis as k, autor as a, pisac as p WHERE upper(k.naslov) LIKE'%$vrijednost%' AND p.idautor=a.idautor AND p.idknjigaopis=k.idknjigaopis AND k.idknjigaopis NOT IN (SELECT pk.idknjigaopis FROM primjerakknjige as pk, iznajmljivanje as i WHERE i.idosobaclan=$userid AND i.idprimjerakknjige=pk.idprimjerakknjige)");
 	if($tippretrage==1)
-	$q01 = myquery("SELECT DISTINCT k.idknjigaopis, k.naslov, a.ime, a.prezime FROM knjigaopis as k, autor as a, pisac as p, primjerakknjige as pr WHERE upper(a.prezime) LIKE'%$vrijednost%' AND p.idknjigaopis=k.idknjigaopis AND p.idautor=a.idautor AND pr.idknjigaopis=k.idknjigaopis AND k.idknjigaopis NOT IN (SELECT pk.idknjigaopis FROM primjerakknjige as pk, iznajmljivanje as i WHERE i.idosobaclan=$userid AND i.idprimjerakknjige=pk.idprimjerakknjige");
+	$q01 = myquery("SELECT k.idknjigaopis, k.naslov, a.ime, a.prezime FROM knjigaopis as k, autor as a, pisac as p WHERE upper(a.prezime) LIKE'%$vrijednost%' AND p.idautor=a.idautor AND p.idknjigaopis=k.idknjigaopis AND k.idknjigaopis NOT IN (SELECT pk.idknjigaopis FROM primjerakknjige as pk, iznajmljivanje as i WHERE i.idosobaclan=$userid AND i.idprimjerakknjige=pk.idprimjerakknjige)");
 	if($tippretrage==2)
-	$q01 = myquery("SELECT DISTINCT k.idknjigaopis, k.naslov, a.ime, a.prezime FROM knjigaopis as k, autor as a, pisac as p, primjerakknjige as pr WHERE upper(a.ime) LIKE'%$vrijednost%' AND p.idknjigaopis=k.idknjigaopis AND p.idautor=a.idautor AND pr.idknjigaopis=k.idknjigaopis  AND k.idknjigaopis NOT IN (SELECT pk.idknjigaopis FROM primjerakknjige as pk, iznajmljivanje as i WHERE i.idosobaclan=$userid AND i.idprimjerakknjige=pk.idprimjerakknjige");
+	$q01 = myquery("SELECT k.idknjigaopis, k.naslov, a.ime, a.prezime FROM knjigaopis as k, autor as a, pisac as p WHERE upper(a.ime) LIKE'%$vrijednost%' AND p.idautor=a.idautor AND p.idknjigaopis=k.idknjigaopis AND k.idknjigaopis NOT IN (SELECT pk.idknjigaopis FROM primjerakknjige as pk, iznajmljivanje as i WHERE i.idosobaclan=$userid AND i.idprimjerakknjige=pk.idprimjerakknjige)");
 	
 	$temp=mysql_num_rows($q01);
 	if($temp>0){
