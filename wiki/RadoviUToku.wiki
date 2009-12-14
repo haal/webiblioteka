@@ -1,0 +1,5 @@
+Admir Heric:
+clan (opcija iznajmi, rezervisi, top10, ocjene)
+prosiriti bazu tabelom log i napraviti funkciju log()
+
+Haris Alesevic:
