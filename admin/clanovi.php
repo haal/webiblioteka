@@ -27,8 +27,12 @@ if ($_REQUEST['akcija'] == 'dodajclana') {
 	$q02 = myquery("SELECT idauth FROM auth WHERE korisnickoime='$username'");
 	$auth = mysql_result($q02,0,0);
 
-	$q03 = myquery("INSERT INTO osoba ( Ime, Prezime, JMBG, UlicaIBroj, PostanskiBroj, Grad, Telefon, email, idtiposobe, idauth, idposlovnica)
-	VALUES ('$ime', '$prezime', '$jmbg', '$adresa', '$pbroj', '$grad', '$telefon', '$email', 3, '$auth', '$poslovnica')");
+	$q03 = myquery("INSERT INTO osoba ( Ime, Prezime, JMBG, UlicaIBroj, PostanskiBroj, Grad, Telefon, email, idauth, idposlovnica)
+	VALUES ('$ime', '$prezime', '$jmbg', '$adresa', '$pbroj', '$grad', '$telefon', '$email', '$auth', '$poslovnica')");
+	$q19 = myquery("SELECT idosoba FROM osoba WHERE ime='$ime' AND prezime='$prezime' AND jmbg='$jmbg'");
+	$id = mysql_result($q19,0,0);
+	
+	$q20 = myquery("INSERT INTO tiposobe ( idtiposobe, naziv) VALUES ('$id', 'clan')");
 	
 ?>
 	<script language="JavaScript">
