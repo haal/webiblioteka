@@ -104,10 +104,12 @@ if($knjiga){
 if ($_REQUEST["akcija"]=="ukloni")
 {
 	if ($knjiga) {
-	$delete1="DELETE FROM knjigaOpis WHERE idKnjigaOpis=" . $knjiga;
-	$delete2="DELETE FROM primjerakKnjige WHERE idKnjigaOpis=" . $knjiga;
+	$delete1="DELETE FROM pisac WHERE idKnjigaOpis=" . $knjiga;
+	$delete2="DELETE FROM knjigaOpis WHERE idKnjigaOpis=" . $knjiga;
+	$delete3="DELETE FROM primjerakknjige WHERE idKnjigaOpis=" . $knjiga;
 	myquery($delete1);
-	myquery($delete2);
+	myquery($delete3);
+	myquery($delete2);	
 	}
 ?>
 	<script language="JavaScript">
