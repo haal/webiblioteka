@@ -9,7 +9,7 @@ U idućoj listi se nalaze pobrojane funkcionalnosti
 RBr. Ime funkcionalnosti (tip pristupa) - status (osoba zaduzena za izradu)
 
  # Logovanje (svi) - ~~u izradi~~ - zavrseno
- # Uređivanje informacija o biblioteci (admin) - u izradi
+ # Uređivanje informacija o biblioteci (admin) - ~~u izradi~~ - zavrseno
  # Prikaz liste poslovnica (admin) - ~~u izradi~~ - zavrseno
  # Dodavanje poslovnice (admin) - ~~u izradi~~ - zavrseno
  # Editovanje poslovnice (admin) - ~~u izradi~~ - zavrseno
