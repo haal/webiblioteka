@@ -47,7 +47,7 @@ if ($_POST['loginforma'] == "1") {
 
 $user_clan=$user_bibliotekar=$user_admin=false;
 if ($userid>0) {
-	$q01 = myquery("select naziv from tiposobe as t, osoba as o, auth as a where o.idTipOsobe=t.idTipOsobe and o.idosoba='$userid'");
+	$q01 = myquery("select naziv from tiposobe where idtiposobe=$userid");
 	while ($r01=mysql_fetch_row($q01)) {
 		if ($r01[0]=="clan") $user_clan=true; 
 		if ($r01[0]=="bibliotekar") $user_bibliotekar=true;
@@ -151,7 +151,6 @@ if ($naslov=="") $naslov = "Webiblioteka"; // default naslov
 if ($greska != "") {
 	niceerror($greska);
 }
-
 
 
 
