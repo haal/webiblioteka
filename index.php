@@ -56,7 +56,7 @@ if ($userid>0) {
 	
 // Korisnik nije ništa!?
 	if (!$user_clan && !$user_bibliotekar && !$user_admin) {
-		$greska = "Vaše korisničko ime je ispravno, ali nemate nikakve privilegije na sistemu! Kontaktirajte administratora.";
+		$greska = "Vaše korisničko ime je ispravno, ali nemate nikakve privilegije na sistemu! Kontaktirajte administratora. ".$userid;
 		$sta = "";
 	}
 }

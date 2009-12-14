@@ -1,7 +1,7 @@
 <?
-function registerUser() {
-	require("lib/config.php");
-	require("lib/biblioteka.php");
+//function registerUser() {
+	require("../lib/config.php");
+	require("../lib/biblioteka.php");
 	
 	dbconnect($conf_dbhost,$conf_dbuser,$conf_dbpass,$conf_dbdb);
 
@@ -26,7 +26,7 @@ if ($_REQUEST["akcija"]=="reg"){
 	$q03 = myquery("INSERT INTO osoba ( Ime, Prezime, JMBG, UlicaIBroj, PostanskiBroj, Grad, Telefon, email, idtiposobe, idauth, idposlovnica)
 	VALUES ('$ime', '$prezime', '$jmbg', '$adresa', '$pbroj', '$grad', '$telefon', '$email', 3, '$auth', 0)");
 	
-}
+//}
 }
 ?>
 
