@@ -98,11 +98,17 @@ function logout() {
 
 
 # genform - pravi zaglavlje forme sa hidden poljima
-function genform($method="POST", $name="") {
+//function genform($method="POST", $name="") {
+function genform($method="POST", $name="", $onsubmit="") { //modifikovana genform koja omogucava js sa parametrom onsubmit
 	global $login;
 
 	if ($method != "GET" && $method != "POST") $method="POST";
-	$result = '<form name="'.$name.'" action="'.$_SERVER['PHP_SELF'].'" method="'.$method.'">'."\n";
+	//$result = '<form name="'.$name.'" action="'.$_SERVER['PHP_SELF'].'" method="'.$method.'">'."\n";
+	$result = '<form name="'.$name.'" action="'.$_SERVER['PHP_SELF'].'"';
+	if ($onsubmit!="") {
+		$result.=' onsubmit="return '.$onsubmit.'(this)"';
+	}
+	$result.=' method="'.$method.'">'."\n";
 	foreach ($_REQUEST as $key=>$value) {
 		if ($key=="pass" && $method=="GET") continue; // Ne pokazuj sifru u URLu!
 		$key = htmlspecialchars($key);

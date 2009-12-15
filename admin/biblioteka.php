@@ -11,7 +11,7 @@ $webadresa = mysql_result($q01,0,2);
 $email = mysql_result($q01,0,3);
 $telefon = mysql_result($q01,0,4);
 	
-//akcija koja upisuje u bazu podatke s forme, vrsi konkretne promjene, dok akcija "edit" samo uzima podatke iz baze i stavlja ih na formu
+//akcija koja upisuje u bazu podatke s forme, vrsi konkretne promjene
 if ($_REQUEST['akcija'] == 'izmijenibiblioteku') {
 
 	$naziv = my_escape($_POST['naziv']);
@@ -21,17 +21,17 @@ if ($_REQUEST['akcija'] == 'izmijenibiblioteku') {
 	$telefon = my_escape($_POST['telefon']);
    
 	$sqlUpdate1="UPDATE biblioteka SET naziv='$naziv' ,adresa='$adresa' ,webadresa='$webadresa' , email='$email' , telefon='$telefon' WHERE idBiblioteka=1";
-	$q02=myquery($sqlUpdate1);//update u tabeli osoba
-
+	$q02=myquery($sqlUpdate1);
+	
 }
 ?>
-		
+		<script type="text/javascript" src="admin/validateBiblioteka.js"></script>
 <?
 
 
 print "<br><b>Uredjivanje informacija o biblioteci</b><br><br>";
 	
-    print genform("POST");
+    print genform("POST","biblioteka","validateBiblioteka");
 	print '<input type="hidden" name="akcija" value="izmijenibiblioteku">';
 ?>
 	Naziv:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="naziv" size="30" value="<?=$naziv?>"><br>
