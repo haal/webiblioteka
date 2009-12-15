@@ -38,7 +38,7 @@ RBr. Ime funkcionalnosti (tip pristupa) - status (osoba zaduzena za izradu)
  # Ocjenjivanje knjige (clan) - u izradi
  # Pregled zadnje dodanih knjiga u biblioteci (svi) - u izradi
  # Pregled najčitanijih knjiga (svi) - u izradi
- # Iznajmljivanje knjige (clan) - u izradi (Heric)
- # Rezervacija (clan) - u izradi (Heric)
- # Registrovanje povrat knjige (bibliotekar) - u izradi
+ # Iznajmljivanje knjige (clan) - ~~u izradi~~ (Heric) - zavrseno
+ # Rezervacija (clan) - ~~u izradi~~ (Heric)  - zavrseno
+ # Registrovanje povrat knjige (bibliotekar) - ~~u izradi~~  - zavrseno
  # Registrovanje putem interneta (svi) - u izradi
