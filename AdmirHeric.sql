@@ -3,17 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 14, 2009 at 11:14 PM
+-- Generation Time: Dec 15, 2009 at 03:32 AM
 -- Server version: 5.0.51
 -- PHP Version: 5.2.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `webiblioteka`
@@ -31,7 +25,7 @@ CREATE TABLE `auth` (
   `Sifra` varchar(20) collate utf8_slovenian_ci NOT NULL,
   `Odobren` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`idAuth`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=21 ;
 
 --
 -- Dumping data for table `auth`
@@ -39,10 +33,10 @@ CREATE TABLE `auth` (
 
 INSERT INTO `auth` (`idAuth`, `KorisnickoIme`, `Sifra`, `Odobren`) VALUES
 (1, 'admin', 'admin', 1),
-(2, 'bibliotekar', 'bibliotekar', 1),
 (3, 'clan', 'clan', 1),
-(11, 'xxx', 'xxx', 1),
-(16, 'alen', 'alen', 1);
+(17, 'deni', 'deni', 1),
+(19, 'bibliotekar', 'bibliotekar', 1),
+(20, 'alen', 'alen', 1);
 
 -- --------------------------------------------------------
 
@@ -63,7 +57,7 @@ CREATE TABLE `autor` (
 --
 
 INSERT INTO `autor` (`idAutor`, `Ime`, `Prezime`, `Biografija`) VALUES
-(1, 'Å½eljko', 'JuriÄ‡', NULL);
+(1, 'Željko', 'Juriæ', NULL);
 
 -- --------------------------------------------------------
 
@@ -101,21 +95,20 @@ CREATE TABLE `iznajmljivanje` (
   `idOsobaClan` int(11) NOT NULL,
   `idOsobaBibliotekar` int(11) NOT NULL,
   `idPrimjerakKnjige` int(11) NOT NULL,
-  `idRezervacija` int(11) default '0',
   `Status` int(11) default NULL,
   PRIMARY KEY  (`idIznajmljivanje`),
   KEY `fk_Akcija_Osoba1` (`idOsobaClan`),
   KEY `fk_Akcija_PrimjerakKnjige1` (`idPrimjerakKnjige`),
   KEY `fk_Akcija_Osoba2` (`idOsobaBibliotekar`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `iznajmljivanje`
 --
 
-INSERT INTO `iznajmljivanje` (`idIznajmljivanje`, `DatumPosudjivanja`, `DatumVracanja`, `idOsobaClan`, `idOsobaBibliotekar`, `idPrimjerakKnjige`, `idRezervacija`, `Status`) VALUES
-(4, '2009-12-14 22:45:29', NULL, 4, 1, 55, 0, 0),
-(5, '2009-12-14 22:45:37', NULL, 4, 1, 56, 0, 0);
+INSERT INTO `iznajmljivanje` (`idIznajmljivanje`, `DatumPosudjivanja`, `DatumVracanja`, `idOsobaClan`, `idOsobaBibliotekar`, `idPrimjerakKnjige`, `Status`) VALUES
+(1, '2009-12-15 03:07:24', '2009-12-15 03:12:28', 8, 1, 57, 1),
+(2, '2009-12-15 03:12:28', NULL, 5, 7, 57, 0);
 
 -- --------------------------------------------------------
 
@@ -163,17 +156,31 @@ CREATE TABLE `log` (
   `userid` int(11) NOT NULL default '0',
   `dogadjaj` varchar(255) collate utf8_slovenian_ci NOT NULL,
   PRIMARY KEY  (`idlog`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=22 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=40 ;
 
 --
 -- Dumping data for table `log`
 --
 
 INSERT INTO `log` (`idlog`, `vrijeme`, `userid`, `dogadjaj`) VALUES
-(18, '2009-12-14 22:19:20', 3, 'Iznajmljen primjerak, clan: 3'),
-(19, '2009-12-14 22:19:25', 3, 'Iznajmljen primjerak, clan: 3'),
-(20, '2009-12-14 22:45:29', 4, 'Iznajmljen primjerak, clan: 4'),
-(21, '2009-12-14 22:45:37', 4, 'Iznajmljen primjerak, clan: 4');
+(26, '2009-12-15 01:37:53', 5, 'Iznajmljen primjerak'),
+(25, '2009-12-15 00:11:54', 4, 'Iznajmljen primjerak'),
+(24, '2009-12-15 00:11:52', 4, 'Iznajmljen primjerak'),
+(23, '2009-12-15 00:11:50', 4, 'Iznajmljen primjerak'),
+(22, '2009-12-15 00:06:14', 4, 'Primjerak rezervisan'),
+(27, '2009-12-15 02:30:21', 7, 'Vraceni primjerci knjige'),
+(28, '2009-12-15 02:31:22', 7, 'Vraceni primjerci knjige'),
+(29, '2009-12-15 03:02:03', 5, 'Primjerak rezervisan'),
+(30, '2009-12-15 03:02:06', 5, 'Primjerak rezervisan'),
+(31, '2009-12-15 03:02:08', 5, 'Iznajmljen primjerak'),
+(32, '2009-12-15 03:04:32', 8, 'Primjerak rezervisan'),
+(33, '2009-12-15 03:04:34', 8, 'Primjerak rezervisan'),
+(34, '2009-12-15 03:04:36', 8, 'Primjerak rezervisan'),
+(35, '2009-12-15 03:07:24', 8, 'Iznajmljen primjerak'),
+(36, '2009-12-15 03:07:39', 5, 'Primjerak rezervisan'),
+(37, '2009-12-15 03:08:41', 7, 'Vracen primjerak knjige id=57'),
+(38, '2009-12-15 03:12:28', 7, 'Vracen primjerak knjige id=57'),
+(39, '2009-12-15 03:12:28', 7, 'Iznajmljen primjerak clanu id=5 (rezervacija)');
 
 -- --------------------------------------------------------
 
@@ -244,7 +251,7 @@ CREATE TABLE `osoba` (
   KEY `fk_Osoba_Auth1` (`idAuth`),
   KEY `fk_Osoba_Poslovnica1` (`idPoslovnica`),
   KEY `idTipOsobe` (`idTipOsobe`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `osoba`
@@ -252,9 +259,9 @@ CREATE TABLE `osoba` (
 
 INSERT INTO `osoba` (`idOsoba`, `Ime`, `Prezime`, `JMBG`, `UlicaIBroj`, `PostanskiBroj`, `Grad`, `Telefon`, `Email`, `Status`, `idTipOsobe`, `idAuth`, `idPoslovnica`) VALUES
 (1, 'Site', 'Admin', '', '', '', '', NULL, NULL, NULL, NULL, 1, 1),
-(2, 'Haris', 'Alesevic', '', '', '', '', NULL, NULL, NULL, NULL, 2, 1),
-(3, 'Admir', 'Heric', '', '', '', '', NULL, NULL, NULL, NULL, 11, 1),
-(4, 'Alen', 'Husic', '0', '', '0', '', '', '', NULL, NULL, 16, 1);
+(5, 'Denis', 'Marusic', '343534534', 'dkhfjdhf', '4545', 'rrr', '0623483984', 'admirheric@gmail.co', NULL, NULL, 17, 1),
+(7, 'Haris', 'Alesevic', '0', '', '0', '', '', '', NULL, NULL, 19, 2),
+(8, 'Alen', 'Alenovic', '0', '', '0', '', '', '', NULL, NULL, 20, 1);
 
 -- --------------------------------------------------------
 
@@ -322,7 +329,7 @@ CREATE TABLE `primjerakknjige` (
   PRIMARY KEY  (`idPrimjerakKnjige`),
   KEY `fk_PrimjerakKnjige_KnjigaOpis1` (`idKnjigaOpis`),
   KEY `fk_PrimjerakKnjige_Poslovnica1` (`idPoslovnica`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=57 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=58 ;
 
 --
 -- Dumping data for table `primjerakknjige`
@@ -342,7 +349,8 @@ INSERT INTO `primjerakknjige` (`idPrimjerakKnjige`, `idKnjigaOpis`, `idPoslovnic
 (17, 5, 2, 0),
 (21, 3, 1, 0),
 (55, 7, 1, 0),
-(56, 7, 1, 0);
+(56, 7, 1, 0),
+(57, 8, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -359,12 +367,14 @@ CREATE TABLE `rezervacija` (
   PRIMARY KEY  (`idRezervacija`),
   KEY `fk_Rezervacija_Osoba1` (`Osoba_idOsoba`),
   KEY `fk_Rezervacija_KnjigaOpis1` (`KnjigaOpis_idKnjigaOpis`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `rezervacija`
 --
 
+INSERT INTO `rezervacija` (`idRezervacija`, `Vrijeme`, `Osoba_idOsoba`, `KnjigaOpis_idKnjigaOpis`, `Status`) VALUES
+(1, '2009-12-15 03:07:38', 5, 8, 1);
 
 -- --------------------------------------------------------
 
@@ -385,9 +395,9 @@ CREATE TABLE `tiposobe` (
 
 INSERT INTO `tiposobe` (`idTipOsobe`, `Naziv`, `Opis`) VALUES
 (1, 'admin', NULL),
-(2, 'bibliotekar', NULL),
-(3, 'clan', NULL),
-(4, 'clan', NULL);
+(5, 'clan', NULL),
+(7, 'bibliotekar', NULL),
+(8, 'clan', NULL);
 
 -- --------------------------------------------------------
 
@@ -467,12 +477,10 @@ ALTER TABLE `poslovnica`
 -- Constraints for table `primjerakknjige`
 --
 ALTER TABLE `primjerakknjige`
-  ADD CONSTRAINT `fk_PrimjerakKnjige_KnjigaOpis1` FOREIGN KEY (`idKnjigaOpis`) REFERENCES `knjigaopis` (`idKnjigaOpis`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_PrimjerakKnjige_Poslovnica1` FOREIGN KEY (`idPoslovnica`) REFERENCES `poslovnica` (`idPoslovnica`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `rezervacija`
 --
 ALTER TABLE `rezervacija`
-  ADD CONSTRAINT `fk_Rezervacija_KnjigaOpis1` FOREIGN KEY (`KnjigaOpis_idKnjigaOpis`) REFERENCES `knjigaopis` (`idKnjigaOpis`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Rezervacija_Osoba1` FOREIGN KEY (`Osoba_idOsoba`) REFERENCES `osoba` (`idOsoba`) ON DELETE NO ACTION ON UPDATE NO ACTION;
