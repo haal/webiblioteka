@@ -79,6 +79,9 @@ if ($_REQUEST["akcija"]=="ukloni")
 	
 	$delete2="DELETE FROM auth WHERE idauth=" . $auth;
 	myquery($delete2);
+	
+	$delete3="DELETE FROM tiposobe WHERE idtiposobe=" . $clan;
+	myquery($delete3);
 	}
 ?>
 	<script language="JavaScript">
@@ -125,7 +128,7 @@ if($clan){
 
 
 //kod tabele koja prikazuje sve clanove
-$q08 = myquery("SELECT idOsoba, ime, prezime FROM osoba WHERE idtiposobe=3");
+$q08 = myquery("SELECT o.idOsoba, o.ime, o.prezime FROM osoba as o, tiposobe as t WHERE t.idtiposobe=o.idosoba AND t.naziv='clan'");
 
 ?>
 <b>Clanovi koji su trenutno registrovani:</b><br><br>
