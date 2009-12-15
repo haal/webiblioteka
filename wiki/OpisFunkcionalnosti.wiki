@@ -42,3 +42,4 @@ RBr. Ime funkcionalnosti (tip pristupa) - status (osoba zaduzena za izradu)
  # Rezervacija (clan) - ~~u izradi~~ (Heric)  - zavrseno
  # Registrovanje povrat knjige (bibliotekar) - ~~u izradi~~  - zavrseno
  # Registrovanje putem interneta (svi) - u izradi
+ # Iznajmljivanje za obicne clanove (bibliotekar) - u izradi
