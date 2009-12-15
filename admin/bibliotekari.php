@@ -27,8 +27,12 @@ if ($_REQUEST['akcija'] == 'dodajbibliotekara') {
 	$q02 = myquery("SELECT idauth FROM auth WHERE korisnickoime='$username'");
 	$auth = mysql_result($q02,0,0);
 
-	$q03 = myquery("INSERT INTO osoba ( Ime, Prezime, JMBG, UlicaIBroj, PostanskiBroj, Grad, Telefon, email, idtiposobe, idauth, idposlovnica)
-	VALUES ('$ime', '$prezime', '$jmbg', '$adresa', '$pbroj', '$grad', '$telefon', '$email', 2, '$auth', '$poslovnica')");
+	$q03 = myquery("INSERT INTO osoba ( Ime, Prezime, JMBG, UlicaIBroj, PostanskiBroj, Grad, Telefon, email, idauth, idposlovnica)
+	VALUES ('$ime', '$prezime', '$jmbg', '$adresa', '$pbroj', '$grad', '$telefon', '$email', '$auth', '$poslovnica')");
+	$q19 = myquery("SELECT idosoba FROM osoba WHERE ime='$ime' AND prezime='$prezime' AND jmbg='$jmbg'");
+	$id = mysql_result($q19,0,0);
+	
+	$q20 = myquery("INSERT INTO tiposobe ( idtiposobe, naziv) VALUES ('$id', 'bibliotekar')");
 	
 ?>
 	<script language="JavaScript">
@@ -75,6 +79,9 @@ if ($_REQUEST["akcija"]=="ukloni")
 	
 	$delete2="DELETE FROM auth WHERE idauth=" . $auth;
 	myquery($delete2);
+	
+	$delete3="DELETE FROM tiposobe WHERE idtiposobe=" . $bibliotekar;
+	myquery($delete3);
 	}
 ?>
 	<script language="JavaScript">
@@ -82,7 +89,6 @@ if ($_REQUEST["akcija"]=="ukloni")
 	</script>
 <?
 }
-
 
 //akcija koja upisuje u bazu podatke s forme, vrsi konkretne promjene, dok akcija "edit" samo uzima podatke iz baze i stavlja ih na formu
 if ($_REQUEST['akcija'] == 'izmijenibibliotekara') {
@@ -121,7 +127,7 @@ if($bibliotekar){
 
 
 //kod tabele koja prikazuje sve bibliotekare
-$q08 = myquery("SELECT idOsoba, ime, prezime FROM osoba WHERE idtiposobe=2");
+$q08 = myquery("SELECT o.idOsoba, o.ime, o.prezime FROM osoba as o, tiposobe as t WHERE t.idtiposobe=o.idosoba AND t.naziv='bibliotekar'");
 
 ?>
 <b>Bibliotekari koji su trenutno registrovani:</b><br><br>
