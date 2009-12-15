@@ -1,5 +1,4 @@
 Admir Heric:
-clan (opcija iznajmi, rezervisi, top10, ocjene)
-prosiriti bazu tabelom log i napraviti funkciju log()
+clan (top10, ocjene)
 
 Haris Alesevic: Uređivanje informacija o biblioteci (admin), registracija (pokusati odraditi pomocu modula)??
