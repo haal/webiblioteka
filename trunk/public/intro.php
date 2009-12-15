@@ -18,6 +18,11 @@ function public_intro() {
 			<?
 				zadnje_obavijesti();
 			?>
+			<td></tr>
+			<tr><td>
+			<?
+				zadnje_dodane_knjige()
+			?>
 			</td></tr>
 			
 		</table>
@@ -73,10 +78,29 @@ function zadnje_obavijesti() {
 	
 	$brojac=1;
 
+	print "<h2>OBAVIJESTI</h2><br>";
 	while ($obavijest=mysql_fetch_row($q01)) {
-		print "<b>".$obavijest[3]." - ".$obavijest[1]."</b><br>".$obavijest[2]."<br>".$obavijest[4]."<br><br><br>";
+		print "<b>".$obavijest[3]." - ".$obavijest[1]."</b><br>".$obavijest[2]."<br>".$obavijest[4]."<br><br>";
 	}
+	print "<br><br>";
 	//print "<b>Prva obavijest</b><br>Tekst same obavijesti<br>";
 	//print "<b>Druga obavijest</b><br>Tekst same obavijesti<br>";
+}
+?>
+
+<?
+function zadnje_dodane_knjige() {
+	require("lib/config.php");
+	
+	dbconnect($conf_dbhost,$conf_dbuser,$conf_dbpass,$conf_dbdb);
+	
+	$q01 = myquery("SELECT k.naslov, z.naziv FROM knjigaopis k, zanr z WHERE k.idZanr=z.idZanr ORDER BY k.datumUlaza");
+	
+	$brojac=1;
+
+	print "<h2>ZADNJE DODANE KNJIGE</h2><br>";
+	while ($knjiga=mysql_fetch_row($q01)) {
+		print $knjiga[0]." - ".$knjiga[1]."<br>";
+	}
 }
 ?>
