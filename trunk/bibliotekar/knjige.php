@@ -17,7 +17,7 @@ if ($_REQUEST['akcija'] == 'vratiknjigu') {
 		bibliotekalog("Vracen primjerak knjige id=$i[1]");
 		
 		//nakon vracanja primjerka provjerava se da li je knjiga rezervisana, ako jeste onda se primjerak prosljedjuje prvoj osobi u redu cekanja
-		$q04 = myquery("SELECT r.Osoba_idOsoba FROM rezervacija as r, primjerakknjige as p WHERE r.KnjigaOpis_idKnjigaOpis=p.idknjigaopis AND p.idprimjerakknjige=$i[1]");
+		$q04 = myquery("SELECT r.Osoba_idOsoba FROM rezervacija as r, primjerakknjige as p WHERE r.KnjigaOpis_idKnjigaOpis=p.idknjigaopis AND p.idprimjerakknjige=$i[1] AND r.status=0");
 		if(mysql_num_rows($q04)>0)//provjera da li je neko rezervisao knjigu
 			{
 				$clan = mysql_result($q04,0,0);	//clan kojem se prosljedjuje primjerak knjige
