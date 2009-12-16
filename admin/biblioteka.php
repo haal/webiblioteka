@@ -25,7 +25,7 @@ if ($_REQUEST['akcija'] == 'izmijenibiblioteku') {
 	
 }
 ?>
-		<script type="text/javascript" src="admin/validateBiblioteka.js"></script>
+		<script type="text/javascript" src="js/validateBiblioteka.js"></script>
 <?
 
 
