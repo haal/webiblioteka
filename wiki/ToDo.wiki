@@ -49,3 +49,5 @@ BrojPrimjeraka->Cijeli broj
 x17. Dodano polje idRezervacije u tabelu Iznajmljivanje da se moze pratiti ako je iznajmljivanje nastalo nakon rezervacije.
 
 x18. Dodana opcija za Zanr u admin meni
+
+19. UNIQUE: username, jmbg i jos neka (treba vrsiti provjeru u bazi da li je jedinstveno navedeno polje tj. prije nego baza izbaci gresku)
