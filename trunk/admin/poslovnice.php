@@ -124,11 +124,11 @@ $brojac++;
 if($brojac==1) print "<p><font color=\"#FF0000\">Trenutno nema registrovanih poslovnica.</font></p><br>";
 
 ?>
-
+<script type="text/javascript" src="js/validatePoslovnica.js"></script>
 </table><br><hr><br>
 
 <?
-    print genform("POST");
+    print genform("POST", "poslovnica", "validatePoslovnica");
 	if ($_REQUEST["akcija"]=="edit") print '<input type="hidden" name="akcija" value="izmijeniposlovnicu">';
 	else print '<input type="hidden" name="akcija" value="dodajposlovnicu">';
 ?>

@@ -168,10 +168,11 @@ $q03 = myquery("SELECT idZanr, naziv FROM zanr");
 
 //forma za dodavanje nove knjige u biblioteku
 ?><br><br><hr><br>
+<script type="text/javascript" src="js/validateKnjiga.js"></script>
 <?
 	if ($_REQUEST["akcija"]=="edit") print '<b>Izmjena postojece knjige:</b><br><br>';
 	else print '<b>Dodavanje nove knjige:</b><br><br>';?>
-	<?=genform("POST");?>
+	<?=genform("POST", "knjiga", "validateKnjiga");?>
 <?
 	if ($_REQUEST["akcija"]=="edit") print '<input type="hidden" name="akcija" value="izmijeniknjigu">';
 	else print '<input type="hidden" name="akcija" value="dodajknjigu">';

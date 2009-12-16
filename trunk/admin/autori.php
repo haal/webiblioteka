@@ -123,10 +123,11 @@ if($brojac==1) print "<p><font color=\"#FF0000\">Trenutno nema autora u bazi pod
 //forma za dodavanje autora u biblioteku
 ?>
 <br><br><hr><br>
+<script type="text/javascript" src="js/validateAutor.js"></script>
 <?
 	if ($_REQUEST["akcija"]=="edit") print '<b>Izmjena postojeceg autora:</b><br><br>';
 	else print '<b>Dodavanje novog autora:</b><br><br>';?>
-	<?=genform("POST");?>
+	<?=genform("POST", "autor", "validateAutor");?>
 <?
 	if ($_REQUEST["akcija"]=="edit") print '<input type="hidden" name="akcija" value="izmijeniautora">';
 	else print '<input type="hidden" name="akcija" value="dodajautora">';

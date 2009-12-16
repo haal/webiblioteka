@@ -120,10 +120,11 @@ if($brojac==1) print "<p><font color=\"#FF0000\">Trenutno nema zanrova u bazi po
 //forma za dodavanje zanra u biblioteku
 ?>
 <br><br><hr><br>
+<script type="text/javascript" src="js/validateZanr.js"></script>
 <?
 	if ($_REQUEST["akcija"]=="edit") print '<b>Izmjena postojeceg zanra:</b><br><br>';
 	else print '<b>Dodavanje novog zanra:</b><br><br>';?>
-	<?=genform("POST");?>
+	<?=genform("POST", "zanr", "validateZanr");?>
 <?
 	if ($_REQUEST["akcija"]=="edit") print '<input type="hidden" name="akcija" value="izmijenizanr">';
 	else print '<input type="hidden" name="akcija" value="dodajzanr">';

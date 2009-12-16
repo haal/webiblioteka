@@ -158,10 +158,13 @@ while ($bibliotekar=mysql_fetch_row($q08)) {
 print "</table><br>";
 if($brojac==1) print "<p><font color=\"#FF0000\">Trenutno nema registrovanih bibliotekara.</font></p><br>";
 print "<hr><br>";
+?>
+<script type="text/javascript" src="js/validateClan.js"></script>
+<?
 	
 	$q09 = myquery("SELECT idPoslovnica, naziv FROM poslovnica");	
 
-    print genform("POST");
+    print genform("POST", "bibliotekar", "validateClan");
 	if ($_REQUEST["akcija"]=="edit") print '<input type="hidden" name="akcija" value="izmijenibibliotekara">';
 	else print '<input type="hidden" name="akcija" value="dodajbibliotekara">';
 ?>
