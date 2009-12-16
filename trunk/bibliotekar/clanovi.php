@@ -157,10 +157,12 @@ while ($clan=mysql_fetch_row($q08))
 print "</table><br>";
 if($brojac==1) print "<p><font color=\"#FF0000\">Trenutno nema registrovanih clanova.</font></p><br>";
 print "<hr><br>";
-	
+?>
+<script type="text/javascript" src="js/validateClan.js"></script>
+<?	
 	$q09 = myquery("SELECT idPoslovnica, naziv FROM poslovnica");
 
-    print genform("POST");
+    print genform("POST", "clan", "validateClan");
 	if ($_REQUEST["akcija"]=="edit") print '<input type="hidden" name="akcija" value="izmijeniclana">';
 	else print '<input type="hidden" name="akcija" value="dodajclana">';
 ?>
