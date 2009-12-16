@@ -135,10 +135,11 @@ $q02 = myquery("SELECT idPoslovnica, naziv FROM poslovnica");
 //forma za dodavanje nove knjige u biblioteku
 ?>
 <br><br><hr><br>
+<script type="text/javascript" src="js/validateObavijest.js"></script>
 <?
 	if ($_REQUEST["akcija"]=="edit") print '<b>Izmjena postojece obavijesti:</b><br><br>';
 	else print '<b>Dodavanje nove obavijesti:</b><br><br>';?>
-	<?=genform("POST");?>
+	<?=genform("POST", "obavijest", "validateObavijest");?>
 <?
 	if ($_REQUEST["akcija"]=="edit") print '<input type="hidden" name="akcija" value="izmijeniobavijest">';
 	else print '<input type="hidden" name="akcija" value="dodajobavijest">';

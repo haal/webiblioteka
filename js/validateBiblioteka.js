@@ -88,11 +88,11 @@ function validateTelefon(fld) {
 		fld.style.background = 'Yellow';
         error = "Niste unijeli telefon.\n";
     }
-	if(fld.value.search(/\d{3}\-\d{3}\-\d{3}/)==-1){
+	else if(fld.value.search(/\d{3}\-\d{3}\-\d{3}/)==-1){
 		fld.style.background = 'Yellow';
 		error = "Niste unijeli validan telefonski broj. Unesite broj u formatu: xxx-xxx-xxx.\n";
 	}
-	if (fld.value.length != 12) {
+	else if (fld.value.length != 11) {
 		fld.style.background = 'Yellow';
 		error = "Niste unijeli validan telefonski broj. Unesite broj u formatu: xxx-xxx-xxx.\n";
 	}
