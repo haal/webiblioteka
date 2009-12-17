@@ -5,8 +5,8 @@ function clan_ocjene() {
 global $userid;
 
 
-//knjige koje su trenutno kod clana
-$q01 = myquery("SELECT k.idknjigaopis, k.naslov, a.ime, a.prezime
+//knjige koje su bile kod clana
+$q01 = myquery("SELECT DISTINCT k.idknjigaopis, k.naslov, a.ime, a.prezime
 				FROM knjigaopis as k, autor as a, pisac as p, iznajmljivanje as i, primjerakknjige as pk
 				WHERE p.idautor=a.idautor AND p.idknjigaopis=k.idknjigaopis AND pk.idknjigaopis=k.idknjigaopis AND i.idprimjerakknjige=pk.idprimjerakknjige AND i.idosobaclan=$userid");
 	
