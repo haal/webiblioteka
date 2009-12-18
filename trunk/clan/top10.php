@@ -36,10 +36,11 @@ while ($knjiga=mysql_fetch_row($q01)) {
 ?>
 	<tr>
 	<td><? print "$brojac"; ?></td>
-	<td><?=$knjiga[1]; ?></td>
+	<td><a href="?sta=clan/knjiga&knjiga=<?=$knjiga[0];?> "><?=$knjiga[1]; ?></a></td>
 	<td align="center"><? print $knjiga[2] . " " . $knjiga[3]; ?></td>
 	<td align="center"><?=$knjiga[4];?></td>
 <?
+if($brojac==10) break;
 $brojac++;
 }
 
@@ -78,10 +79,11 @@ while ($knjiga=mysql_fetch_row($q01)) {
 ?>
 	<tr>
 	<td><? print "$brojac"; ?></td>
-	<td><?=$knjiga[1]; ?></td>
+	<td><a href="?sta=clan/knjiga&knjiga=<?=$knjiga[0];?> "><?=$knjiga[1]; ?></a></td>
 	<td align="center"><? print $knjiga[2] . " " . $knjiga[3]; ?></td>
 	<td align="center"><? if($knjiga[4]) print number_format($knjiga[4],2); else print "-";?></td>
 <?
+if($brojac==10) break;
 $brojac++;
 }
 
@@ -122,10 +124,11 @@ while ($knjiga=mysql_fetch_row($q01)) {
 ?>
 	<tr>
 	<td><? print "$brojac"; ?></td>
-	<td><?=$knjiga[1]; ?></td>
+	<td><a href="?sta=clan/knjiga&knjiga=<?=$knjiga[0];?> "><?=$knjiga[1]; ?></a></td>
 	<td align="center"><? print $knjiga[2] . " " . $knjiga[3]; ?></td>
 	<td align="center"><?=date("d.m.Y. H:i",($knjiga[4]));?></td>
 <?
+if($brojac==10) break;
 $brojac++;
 }
 

@@ -106,7 +106,7 @@ while ($knjiga=mysql_fetch_row($q01)) {
 ?>
 	<tr>
 	<td><? print "$brojac"; ?></td>
-	<td><?=$knjiga[1]; ?></td>
+	<td><a href="?sta=clan/knjiga&knjiga=<?=$knjiga[0];?> "><?=$knjiga[1]; ?></a></td>
 	<td align="center"><? print $knjiga[2] . " " . $knjiga[3]; ?></td>
 	<td align="center"><?=$broj; ?></td>
 	<td align="center">
