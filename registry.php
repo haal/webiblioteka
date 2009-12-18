@@ -26,8 +26,11 @@ array("admin/biblioteka", "Editovanje informacija o biblioteci", "Admin - Biblio
 
 array("bibliotekar/intro", "Bibliotekar", "Bibliotekar", "B"),
 array("bibliotekar/clanovi", "Upravljanje clanovima", "Bibliotekar - Clanovi", "B"),
-array("bibliotekar/knjige", "Upravljanje knjigama", "Bibliotekar - Knjige", "B"),
+array("bibliotekar/iznajmljivanje", "Iznajmljivanje - standardni korisnici", "Iznajmljivanje", "B"),
 array("bibliotekar/obavijesti", "Upravljanje obavijestima", "Bibliotekar - Obavijesti", "B"),
+array("bibliotekar/vracanje", "Vracanje knjiga - online korisnici", "Vracanje", "B"),
+array("bibliotekar/odobravanje", "Odobravanje knjiga - online korisnici", "Odobravanje", "B"),
+
 
 
 array("clan/intro", "Clan", "Clan", "C"),
