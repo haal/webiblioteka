@@ -42,7 +42,7 @@ if (mysql_num_rows($q03)>0) $srednjaocjena = mysql_result($q03,0,0);
 ?>
 	<tr>
 	<td><? print "$brojac"; ?></td>
-	<td><?=$knjiga[1]; ?></td>
+	<td><a href="?sta=clan/knjiga&knjiga=<?=$knjiga[0];?> "><?=$knjiga[1]; ?></a></td>
 	<td align="center"><? print $knjiga[2] . " " . $knjiga[3]; ?></td>
 	<td align="center"><? if($ocjena) print $ocjena; else print "-";?></td>
 	<td align="center"><? if($srednjaocjena) print number_format($srednjaocjena,2); else print "-";?></td>
