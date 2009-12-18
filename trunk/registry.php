@@ -35,6 +35,7 @@ array("clan/knjige", "Pretraga knjiga", "Knjige", "C"),
 array("clan/status", "Stanje iznajmljivanja i rezervacija", "Status", "C"),
 array("clan/ocjene", "Ocjenjivanje i pregled iznajmljenih knjiga", "Ocjene", "C"),
 array("clan/ocjena", "Ocjenjivanje knjige", "Ocjena", "C"),
+array("clan/knjiga", "Detalji knjige", "Knjiga", "C"),
 array("clan/top10", "Top 10 knjiga", "Top 10", "C")
 
 
