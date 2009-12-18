@@ -80,7 +80,9 @@ function bibliotekar_meni($fj) {
 		<td align="left">
 		<table border="0" width="100%">
 			<tr>
-				<td width="10%" valign="top" bgcolor="#FFFFFF" ><br><font size="-1" color="#FFFFFF">&nbsp;&nbsp;<a href="?sta=bibliotekar/knjige">KNJIGE</a>
+				<td width="10%" valign="top" bgcolor="#FFFFFF" ><br><font size="-1" color="#FFFFFF">&nbsp;&nbsp;<a href="?sta=bibliotekar/vracanje">VRACANJE</a>
+				<br>&nbsp;&nbsp;<a href="?sta=bibliotekar/odobravanje">ODOBRAVANJE</a>
+				<br>&nbsp;&nbsp;<a href="?sta=bibliotekar/iznajmljivanje">IZNAJMLJIVANJE</a>
 				<br>&nbsp;&nbsp;<a href="?sta=bibliotekar/clanovi">CLANOVI</a>
 				<br>&nbsp;&nbsp;<a href="?sta=bibliotekar/obavijesti">OBAVIJESTI</a>
 				<br><br>
