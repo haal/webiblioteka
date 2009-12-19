@@ -82,7 +82,7 @@ function validateTelefon(fld) {
 		fld.style.background = 'Yellow';
 		error = "Niste unijeli validan telefonski broj. Unesite broj u formatu: xxx-xxx-xxx.\n";
 	}
-	if (fld.value.length != 12) {
+	if (fld.value.length != 11) {
 		fld.style.background = 'Yellow';
 		error = "Niste unijeli validan telefonski broj. Unesite broj u formatu: xxx-xxx-xxx.\n";
 	}
