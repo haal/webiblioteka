@@ -1,19 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 2.11.6
+-- version 3.2.0.1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 18, 2009 at 05:43 PM
--- Server version: 5.0.51
--- PHP Version: 5.2.6
+-- Generation Time: Dec 19, 2009 at 04:20 PM
+-- Server version: 5.1.36
+-- PHP Version: 5.3.0
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `webiblioteka`
@@ -25,12 +19,12 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Table structure for table `auth`
 --
 
-CREATE TABLE `auth` (
-  `idAuth` int(11) NOT NULL auto_increment,
-  `KorisnickoIme` varchar(20) collate utf8_slovenian_ci NOT NULL,
-  `Sifra` varchar(20) collate utf8_slovenian_ci NOT NULL,
-  `Odobren` tinyint(1) NOT NULL default '0',
-  PRIMARY KEY  (`idAuth`)
+CREATE TABLE IF NOT EXISTS `auth` (
+  `idAuth` int(11) NOT NULL AUTO_INCREMENT,
+  `KorisnickoIme` varchar(20) COLLATE utf8_slovenian_ci NOT NULL,
+  `Sifra` varchar(20) COLLATE utf8_slovenian_ci NOT NULL,
+  `Odobren` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`idAuth`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=22 ;
 
 --
@@ -51,12 +45,12 @@ INSERT INTO `auth` (`idAuth`, `KorisnickoIme`, `Sifra`, `Odobren`) VALUES
 -- Table structure for table `autor`
 --
 
-CREATE TABLE `autor` (
-  `idAutor` int(11) NOT NULL auto_increment,
-  `Ime` varchar(25) collate utf8_slovenian_ci NOT NULL,
-  `Prezime` varchar(35) collate utf8_slovenian_ci NOT NULL,
-  `Biografija` text collate utf8_slovenian_ci,
-  PRIMARY KEY  (`idAutor`)
+CREATE TABLE IF NOT EXISTS `autor` (
+  `idAutor` int(11) NOT NULL AUTO_INCREMENT,
+  `Ime` varchar(25) COLLATE utf8_slovenian_ci NOT NULL,
+  `Prezime` varchar(35) COLLATE utf8_slovenian_ci NOT NULL,
+  `Biografija` text COLLATE utf8_slovenian_ci,
+  PRIMARY KEY (`idAutor`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=3 ;
 
 --
@@ -73,14 +67,14 @@ INSERT INTO `autor` (`idAutor`, `Ime`, `Prezime`, `Biografija`) VALUES
 -- Table structure for table `biblioteka`
 --
 
-CREATE TABLE `biblioteka` (
-  `idBiblioteka` int(11) NOT NULL auto_increment,
-  `Naziv` varchar(45) collate utf8_slovenian_ci NOT NULL,
-  `Adresa` varchar(100) collate utf8_slovenian_ci default NULL,
-  `WebAdresa` varchar(25) collate utf8_slovenian_ci default NULL,
-  `Email` varchar(50) collate utf8_slovenian_ci default NULL,
-  `Telefon` varchar(13) collate utf8_slovenian_ci default NULL,
-  PRIMARY KEY  (`idBiblioteka`)
+CREATE TABLE IF NOT EXISTS `biblioteka` (
+  `idBiblioteka` int(11) NOT NULL AUTO_INCREMENT,
+  `Naziv` varchar(45) COLLATE utf8_slovenian_ci NOT NULL,
+  `Adresa` varchar(100) COLLATE utf8_slovenian_ci DEFAULT NULL,
+  `WebAdresa` varchar(25) COLLATE utf8_slovenian_ci DEFAULT NULL,
+  `Email` varchar(50) COLLATE utf8_slovenian_ci DEFAULT NULL,
+  `Telefon` varchar(13) COLLATE utf8_slovenian_ci DEFAULT NULL,
+  PRIMARY KEY (`idBiblioteka`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=2 ;
 
 --
@@ -96,16 +90,16 @@ INSERT INTO `biblioteka` (`idBiblioteka`, `Naziv`, `Adresa`, `WebAdresa`, `Email
 -- Table structure for table `iznajmljivanje`
 --
 
-CREATE TABLE `iznajmljivanje` (
-  `idIznajmljivanje` int(11) NOT NULL auto_increment,
-  `DatumPosudjivanja` timestamp NULL default CURRENT_TIMESTAMP,
-  `DatumVracanja` timestamp NULL default NULL,
+CREATE TABLE IF NOT EXISTS `iznajmljivanje` (
+  `idIznajmljivanje` int(11) NOT NULL AUTO_INCREMENT,
+  `DatumPosudjivanja` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `DatumVracanja` timestamp NULL DEFAULT NULL,
   `idOsobaClan` int(11) NOT NULL,
   `idOsobaBibliotekar` int(11) NOT NULL,
   `idPrimjerakKnjige` int(11) NOT NULL,
-  `Status` int(11) default NULL,
-  `Odobreno` int(11) default NULL,
-  PRIMARY KEY  (`idIznajmljivanje`),
+  `Status` int(11) DEFAULT NULL,
+  `Odobreno` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idIznajmljivanje`),
   KEY `fk_Akcija_Osoba1` (`idOsobaClan`),
   KEY `fk_Akcija_PrimjerakKnjige1` (`idPrimjerakKnjige`),
   KEY `fk_Akcija_Osoba2` (`idOsobaBibliotekar`)
@@ -132,20 +126,20 @@ INSERT INTO `iznajmljivanje` (`idIznajmljivanje`, `DatumPosudjivanja`, `DatumVra
 -- Table structure for table `knjigaopis`
 --
 
-CREATE TABLE `knjigaopis` (
-  `idKnjigaOpis` int(11) NOT NULL auto_increment,
-  `Naslov` varchar(200) collate utf8_slovenian_ci NOT NULL,
-  `Podnaslov` varchar(220) collate utf8_slovenian_ci default NULL,
-  `ISBN` varchar(13) collate utf8_slovenian_ci default NULL,
-  `Izdanje` varchar(5) collate utf8_slovenian_ci default NULL,
-  `Opis` text collate utf8_slovenian_ci,
-  `Jezik` varchar(20) collate utf8_slovenian_ci default NULL,
-  `GodinaIzdavanja` year(4) default NULL,
-  `idZanr` int(11) default NULL,
-  `DatumUlaza` timestamp NULL default NULL,
-  `BrojPrimjeraka` int(11) default NULL,
-  `Status` varchar(20) collate utf8_slovenian_ci default NULL,
-  PRIMARY KEY  (`idKnjigaOpis`),
+CREATE TABLE IF NOT EXISTS `knjigaopis` (
+  `idKnjigaOpis` int(11) NOT NULL AUTO_INCREMENT,
+  `Naslov` varchar(200) COLLATE utf8_slovenian_ci NOT NULL,
+  `Podnaslov` varchar(220) COLLATE utf8_slovenian_ci DEFAULT NULL,
+  `ISBN` varchar(13) COLLATE utf8_slovenian_ci DEFAULT NULL,
+  `Izdanje` varchar(5) COLLATE utf8_slovenian_ci DEFAULT NULL,
+  `Opis` text COLLATE utf8_slovenian_ci,
+  `Jezik` varchar(20) COLLATE utf8_slovenian_ci DEFAULT NULL,
+  `GodinaIzdavanja` year(4) DEFAULT NULL,
+  `idZanr` int(11) DEFAULT NULL,
+  `DatumUlaza` timestamp NULL DEFAULT NULL,
+  `BrojPrimjeraka` int(11) DEFAULT NULL,
+  `Status` varchar(20) COLLATE utf8_slovenian_ci DEFAULT NULL,
+  PRIMARY KEY (`idKnjigaOpis`),
   UNIQUE KEY `ISBN` (`ISBN`),
   KEY `idZanr` (`idZanr`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=10 ;
@@ -167,12 +161,12 @@ INSERT INTO `knjigaopis` (`idKnjigaOpis`, `Naslov`, `Podnaslov`, `ISBN`, `Izdanj
 -- Table structure for table `log`
 --
 
-CREATE TABLE `log` (
-  `idlog` int(11) NOT NULL auto_increment,
-  `vrijeme` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-  `userid` int(11) NOT NULL default '0',
-  `dogadjaj` varchar(255) collate utf8_slovenian_ci NOT NULL,
-  PRIMARY KEY  (`idlog`)
+CREATE TABLE IF NOT EXISTS `log` (
+  `idlog` int(11) NOT NULL AUTO_INCREMENT,
+  `vrijeme` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `userid` int(11) NOT NULL DEFAULT '0',
+  `dogadjaj` varchar(255) COLLATE utf8_slovenian_ci NOT NULL,
+  PRIMARY KEY (`idlog`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=80 ;
 
 --
@@ -227,22 +221,26 @@ INSERT INTO `log` (`idlog`, `vrijeme`, `userid`, `dogadjaj`) VALUES
 -- Table structure for table `obavijest`
 --
 
-CREATE TABLE `obavijest` (
-  `idObavijest` int(11) NOT NULL auto_increment,
-  `Naslov` varchar(25) collate utf8_slovenian_ci NOT NULL,
-  `Tekst` text collate utf8_slovenian_ci NOT NULL,
-  `Datum` date default NULL,
+CREATE TABLE IF NOT EXISTS `obavijest` (
+  `idObavijest` int(11) NOT NULL AUTO_INCREMENT,
+  `Naslov` varchar(25) COLLATE utf8_slovenian_ci NOT NULL,
+  `Tekst` text COLLATE utf8_slovenian_ci NOT NULL,
+  `Datum` timestamp NULL DEFAULT NULL,
   `idOsoba` int(11) NOT NULL,
   `idPoslovnica` int(11) NOT NULL,
-  PRIMARY KEY  (`idObavijest`),
+  PRIMARY KEY (`idObavijest`),
   KEY `fk_Obavijest_Osoba1` (`idOsoba`),
   KEY `fk_Obavijest_Poslovnica1` (`idPoslovnica`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `obavijest`
 --
 
+INSERT INTO `obavijest` (`idObavijest`, `Naslov`, `Tekst`, `Datum`, `idOsoba`, `idPoslovnica`) VALUES
+(1, 'Neradni dan', 'Obavijestaavamo sve korinsike nasih usluga da je srijeda 12.12.1212 neradni dan te da nasi korinici nece moci iznajmljivati knjige. \r\nHvala', '2009-12-19 15:24:06', 7, 1),
+(2, 'Novogodisnji praznici', 'The purpose of a web browser (like Internet Explorer or Firefox) is to read HTML documents and display them as web pages. The browser does not display the HTML tags, but uses the tags to interpret the content of the page: The purpose of a web browser (like Internet Explorer or Firefox) is to read HTML documents and display them as web pages. The browser does not display the HTML tags, but uses the tags to interpret the content of the page:', '2009-12-19 15:33:13', 7, 2),
+(3, 'Akcija: 2 za 1', 'U periodu od 12 do 20 decembra svim našim èlanvima se nudi iznajmljivanje dvije knjige za cijenu jedne, a u povodu 50 godina djelovanja naše biblioteke.', '2009-12-19 15:32:54', 7, 1);
 
 -- --------------------------------------------------------
 
@@ -250,13 +248,13 @@ CREATE TABLE `obavijest` (
 -- Table structure for table `ocjena`
 --
 
-CREATE TABLE `ocjena` (
-  `idOcjena` int(11) NOT NULL auto_increment,
+CREATE TABLE IF NOT EXISTS `ocjena` (
+  `idOcjena` int(11) NOT NULL AUTO_INCREMENT,
   `Vrijednost` tinyint(4) NOT NULL,
-  `Komentar` text collate utf8_slovenian_ci,
+  `Komentar` text COLLATE utf8_slovenian_ci,
   `idOsoba` int(11) NOT NULL,
   `idKnjigaOpis` int(11) NOT NULL,
-  PRIMARY KEY  (`idOcjena`),
+  PRIMARY KEY (`idOcjena`),
   KEY `fk_Ocjena_Osoba1` (`idOsoba`),
   KEY `fk_Ocjena_KnjigaOpis1` (`idKnjigaOpis`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=15 ;
@@ -280,20 +278,20 @@ INSERT INTO `ocjena` (`idOcjena`, `Vrijednost`, `Komentar`, `idOsoba`, `idKnjiga
 -- Table structure for table `osoba`
 --
 
-CREATE TABLE `osoba` (
-  `idOsoba` int(11) NOT NULL auto_increment,
-  `Ime` varchar(25) collate utf8_slovenian_ci NOT NULL,
-  `Prezime` varchar(35) collate utf8_slovenian_ci NOT NULL,
-  `JMBG` varchar(13) collate utf8_slovenian_ci NOT NULL,
-  `UlicaIBroj` varchar(25) collate utf8_slovenian_ci NOT NULL,
-  `PostanskiBroj` varchar(5) collate utf8_slovenian_ci NOT NULL,
-  `Grad` varchar(25) collate utf8_slovenian_ci NOT NULL,
-  `Telefon` varchar(13) collate utf8_slovenian_ci default NULL,
-  `Email` varchar(50) collate utf8_slovenian_ci default NULL,
-  `Status` varchar(50) collate utf8_slovenian_ci default NULL,
-  `idAuth` int(11) default NULL,
+CREATE TABLE IF NOT EXISTS `osoba` (
+  `idOsoba` int(11) NOT NULL AUTO_INCREMENT,
+  `Ime` varchar(25) COLLATE utf8_slovenian_ci NOT NULL,
+  `Prezime` varchar(35) COLLATE utf8_slovenian_ci NOT NULL,
+  `JMBG` varchar(13) COLLATE utf8_slovenian_ci NOT NULL,
+  `UlicaIBroj` varchar(25) COLLATE utf8_slovenian_ci NOT NULL,
+  `PostanskiBroj` varchar(5) COLLATE utf8_slovenian_ci NOT NULL,
+  `Grad` varchar(25) COLLATE utf8_slovenian_ci NOT NULL,
+  `Telefon` varchar(13) COLLATE utf8_slovenian_ci DEFAULT NULL,
+  `Email` varchar(50) COLLATE utf8_slovenian_ci DEFAULT NULL,
+  `Status` varchar(50) COLLATE utf8_slovenian_ci DEFAULT NULL,
+  `idAuth` int(11) DEFAULT NULL,
   `idPoslovnica` int(11) NOT NULL,
-  PRIMARY KEY  (`idOsoba`),
+  PRIMARY KEY (`idOsoba`),
   KEY `fk_Osoba_Auth1` (`idAuth`),
   KEY `fk_Osoba_Poslovnica1` (`idPoslovnica`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=10 ;
@@ -315,13 +313,13 @@ INSERT INTO `osoba` (`idOsoba`, `Ime`, `Prezime`, `JMBG`, `UlicaIBroj`, `Postans
 -- Table structure for table `pisac`
 --
 
-CREATE TABLE `pisac` (
-  `idAutor` int(11) NOT NULL auto_increment,
+CREATE TABLE IF NOT EXISTS `pisac` (
+  `idAutor` int(11) NOT NULL AUTO_INCREMENT,
   `idKnjigaOpis` int(11) NOT NULL,
-  PRIMARY KEY  (`idAutor`,`idKnjigaOpis`),
+  PRIMARY KEY (`idAutor`,`idKnjigaOpis`),
   KEY `idAutor` (`idAutor`),
   KEY `idKnjigaOpis` (`idKnjigaOpis`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `pisac`
@@ -340,16 +338,16 @@ INSERT INTO `pisac` (`idAutor`, `idKnjigaOpis`) VALUES
 -- Table structure for table `poslovnica`
 --
 
-CREATE TABLE `poslovnica` (
-  `idPoslovnica` int(11) NOT NULL auto_increment,
-  `Naziv` varchar(45) collate utf8_slovenian_ci NOT NULL,
-  `UlicaIBroj` varchar(25) collate utf8_slovenian_ci NOT NULL,
-  `PostanskiBroj` varchar(5) collate utf8_slovenian_ci NOT NULL,
-  `Grad` varchar(25) collate utf8_slovenian_ci NOT NULL,
-  `Telefon` varchar(13) collate utf8_slovenian_ci default NULL,
-  `Email` varchar(50) collate utf8_slovenian_ci default NULL,
+CREATE TABLE IF NOT EXISTS `poslovnica` (
+  `idPoslovnica` int(11) NOT NULL AUTO_INCREMENT,
+  `Naziv` varchar(45) COLLATE utf8_slovenian_ci NOT NULL,
+  `UlicaIBroj` varchar(25) COLLATE utf8_slovenian_ci NOT NULL,
+  `PostanskiBroj` varchar(5) COLLATE utf8_slovenian_ci NOT NULL,
+  `Grad` varchar(25) COLLATE utf8_slovenian_ci NOT NULL,
+  `Telefon` varchar(13) COLLATE utf8_slovenian_ci DEFAULT NULL,
+  `Email` varchar(50) COLLATE utf8_slovenian_ci DEFAULT NULL,
   `idBiblioteka` int(11) NOT NULL,
-  PRIMARY KEY  (`idPoslovnica`),
+  PRIMARY KEY (`idPoslovnica`),
   KEY `fk_Poslovnica_Biblioteka1` (`idBiblioteka`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=4 ;
 
@@ -360,7 +358,7 @@ CREATE TABLE `poslovnica` (
 INSERT INTO `poslovnica` (`idPoslovnica`, `Naziv`, `UlicaIBroj`, `PostanskiBroj`, `Grad`, `Telefon`, `Email`, `idBiblioteka`) VALUES
 (1, 'Poslovnica br.1', 'Logavina 12', '77000', 'Sarajevo', '033-123-456', 'pbr1@webiblioteka.ba', 1),
 (2, 'Poslovnica br.2', 'Bardakcije 1', '77000', 'Sarajevo', '033-123-456', 'pbr2@webiblioteka.ba', 1),
-(3, 'Poslovnica br.3', 'Zaima ', '77000', 'Sarajevo', '033123456', 'pbr3@webiblioteka.ba', 1);
+(3, 'Poslovnica br.3', 'Zaima Šarca 12', '77000', 'Sarajevo', '033-122-1231', 'pbr3@webiblioteka.ba', 1);
 
 -- --------------------------------------------------------
 
@@ -368,12 +366,12 @@ INSERT INTO `poslovnica` (`idPoslovnica`, `Naziv`, `UlicaIBroj`, `PostanskiBroj`
 -- Table structure for table `primjerakknjige`
 --
 
-CREATE TABLE `primjerakknjige` (
-  `idPrimjerakKnjige` int(11) NOT NULL auto_increment,
+CREATE TABLE IF NOT EXISTS `primjerakknjige` (
+  `idPrimjerakKnjige` int(11) NOT NULL AUTO_INCREMENT,
   `idKnjigaOpis` int(11) NOT NULL,
   `idPoslovnica` int(11) NOT NULL,
-  `Status` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`idPrimjerakKnjige`),
+  `Status` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`idPrimjerakKnjige`),
   KEY `fk_PrimjerakKnjige_KnjigaOpis1` (`idKnjigaOpis`),
   KEY `fk_PrimjerakKnjige_Poslovnica1` (`idPoslovnica`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=32 ;
@@ -421,13 +419,13 @@ INSERT INTO `primjerakknjige` (`idPrimjerakKnjige`, `idKnjigaOpis`, `idPoslovnic
 -- Table structure for table `rezervacija`
 --
 
-CREATE TABLE `rezervacija` (
-  `idRezervacija` int(11) NOT NULL auto_increment,
-  `Vrijeme` timestamp NOT NULL default CURRENT_TIMESTAMP,
+CREATE TABLE IF NOT EXISTS `rezervacija` (
+  `idRezervacija` int(11) NOT NULL AUTO_INCREMENT,
+  `Vrijeme` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `idOsoba` int(11) NOT NULL,
   `idKnjigaOpis` int(11) NOT NULL,
-  `Status` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`idRezervacija`),
+  `Status` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`idRezervacija`),
   KEY `fk_Rezervacija_Osoba1` (`idOsoba`),
   KEY `fk_Rezervacija_KnjigaOpis1` (`idKnjigaOpis`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=1 ;
@@ -443,10 +441,10 @@ CREATE TABLE `rezervacija` (
 -- Table structure for table `tiposobe`
 --
 
-CREATE TABLE `tiposobe` (
+CREATE TABLE IF NOT EXISTS `tiposobe` (
   `idTipOsobe` int(11) NOT NULL,
-  `Naziv` varchar(25) collate utf8_slovenian_ci NOT NULL,
-  `Opis` varchar(200) collate utf8_slovenian_ci default NULL,
+  `Naziv` varchar(25) COLLATE utf8_slovenian_ci NOT NULL,
+  `Opis` varchar(200) COLLATE utf8_slovenian_ci DEFAULT NULL,
   KEY `idTipOsobe` (`idTipOsobe`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci;
 
@@ -467,11 +465,11 @@ INSERT INTO `tiposobe` (`idTipOsobe`, `Naziv`, `Opis`) VALUES
 -- Table structure for table `zanr`
 --
 
-CREATE TABLE `zanr` (
-  `idZanr` int(11) NOT NULL auto_increment,
-  `Naziv` varchar(45) collate utf8_slovenian_ci NOT NULL,
-  `Opis` varchar(200) collate utf8_slovenian_ci default NULL,
-  PRIMARY KEY  (`idZanr`)
+CREATE TABLE IF NOT EXISTS `zanr` (
+  `idZanr` int(11) NOT NULL AUTO_INCREMENT,
+  `Naziv` varchar(45) COLLATE utf8_slovenian_ci NOT NULL,
+  `Opis` varchar(200) COLLATE utf8_slovenian_ci DEFAULT NULL,
+  PRIMARY KEY (`idZanr`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=5 ;
 
 --
@@ -520,7 +518,7 @@ ALTER TABLE `ocjena`
 --
 ALTER TABLE `osoba`
   ADD CONSTRAINT `fk_Osoba_Auth1` FOREIGN KEY (`idAuth`) REFERENCES `auth` (`idAuth`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Osoba_Poslovnica1` FOREIGN KEY (`idPoslovnica`) REFERENCES `poslovnica` (`idPoslovnica`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Osoba_Poslovnica1` FOREIGN KEY (`idPoslovnica`) REFERENCES `poslovnica` (`idPoslovnica`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `pisac`
