@@ -6,16 +6,16 @@ global $userid;
 
 $obavijest = intval($_REQUEST['obavijest']);
 
-//dodavanje nove knjige
+//dodavanje nove obavijesti
 if ($_REQUEST['akcija'] == 'dodajobavijest') {
 	
 	$naslov = my_escape($_POST['naslov']);
 	$tekst = my_escape($_POST['tekst']);
-	$datum = date("y-m-d");
+	$vrijeme = time();
 	$osoba = intval($_POST['osoba']);	//idOsoba
 	$poslovnica = intval($_POST['poslovnica']);	//idPoslovnica
 	
-$q011 = myquery("INSERT INTO obavijest ( Naslov, Tekst, Datum, idOsoba, idPoslovnica) VALUES ('$naslov','$tekst', '$datum', '$userid', '$poslovnica')");
+$q011 = myquery("INSERT INTO obavijest ( Naslov, Tekst, Datum, idOsoba, idPoslovnica) VALUES ('$naslov','$tekst', FROM_UNIXTIME('$vrijeme'), '$userid', '$poslovnica')");
 
 $q02 = myquery("SELECT idObavijest FROM obavijest ORDER BY datum LIMIT 1"); //upit koji nam daje id obavijesti koju dodajemo, potreban kasnije
 $obavijest=mysql_result($q02,0,0);
@@ -88,7 +88,8 @@ if ($_REQUEST["akcija"]=="ukloni")
 
 //kod tabele koja prikazuje sve obavijesti
 
-$q01 = myquery("SELECT o.idObavijest, o.naslov, o.datum, p.naziv FROM obavijest o, poslovnica p WHERE o.idPoslovnica=p.idPoslovnica");
+$q01 = myquery("SELECT o.idObavijest, o.naslov, UNIX_TIMESTAMP(o.datum) as vrijeme, p.naziv FROM obavijest o, poslovnica p WHERE o.idPoslovnica=p.idPoslovnica
+ORDER BY vrijeme DESC LIMIT 0,15");
 
 ?>
 
@@ -97,8 +98,8 @@ $q01 = myquery("SELECT o.idObavijest, o.naslov, o.datum, p.naziv FROM obavijest 
 <table width="730" border="1" cellpadding="1" cellspacing="1" bordercolor="#000000">
 	<tr>
 	<td width=20><b>R.br.</b></td>
-	<td width=410><b>Naslov obavijesti</b></td>
-    <td width=50><b>Datum</b></td>
+	<td width=300><b>Naslov obavijesti</b></td>
+    <td width=150><b>Datum i vrijeme</b></td>
 	<td width=100><b>Poslovnica</b></td>
 	<td width=150 align="center"><b>Opcije</b></td>
 	</tr>
@@ -113,7 +114,7 @@ while ($obavijest=mysql_fetch_row($q01)) {
 <tr>
 	<td><? print "$brojac"; ?></td>
 	<td><?=$obavijest[1]; ?></td>
-	<td><?=$obavijest[2]; ?></td>
+	<td><?=date("d.m.Y. H:i",($obavijest[2])); ?></td>
 	<td><?=$obavijest[3]; ?></td>
 	<td align="center">
 		<a href="?sta=bibliotekar/obavijesti&akcija=ukloni&obavijest=<?php echo $obavijest[0];?> ">Ukloni</a>&nbsp;&nbsp;&nbsp;

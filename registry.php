@@ -9,6 +9,7 @@ $registry = array(
 
 array("public/intro", "Login", "Login", "P"),
 array("public/registracija", "Registracija", "Registracija", "P"),
+array("public/knjiga", "Detalji o knjizi", "Knjiga opis", "P"),
 
 
 array("admin/intro", "Admin", "Admin", "A"),
