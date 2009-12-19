@@ -34,11 +34,11 @@ RBr. Ime funkcionalnosti (tip pristupa) - status (osoba zaduzena za izradu)
  # Dodavanje obavijesti (admin,bibliotekar) - ~~u izradi~~ - zavrseno
  # Editovanje obavijesti (admin,bibliotekar) - ~~u izradi~~ - zavrseno
  # Brisanje obavijesti (admin,bibliotekar) - ~~u izradi~~ - zavrseno
- # Pregled dosad iznamljenih knjiga (clan) (Heric) - u izradi
- # Ocjenjivanje knjige (clan) (Heric) - u izradi
- # Pregled zadnje dodanih knjiga u biblioteci (svi) (Heric) - u izradi
- # Pregled najčitanijih knjiga (svi) (Heric) - u izradi
- # Iznajmljivanje knjige (clan) - ~~u izradi~~) - zavrseno
+ # Pregled dosad iznamljenih knjiga (clan) - ~~u izradi~~ - zavrseno
+ # Ocjenjivanje knjige (clan) - ~~u izradi~~ - zavrseno
+ # Pregled zadnje dodanih knjiga u biblioteci (svi) - ~~u izradi~~ - zavrseno
+ # Pregled najčitanijih knjiga (svi) - ~~u izradi~~ - zavrseno
+ # Iznajmljivanje knjige (clan) - ~~u izradi~~ - zavrseno
  # Rezervacija (clan) - ~~u izradi~~  - zavrseno
  # Registrovanje povrat knjige (bibliotekar) - ~~u izradi~~  - zavrseno
  # Registrovanje putem interneta (svi) - u izradi
