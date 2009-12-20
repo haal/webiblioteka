@@ -1,4 +1,4 @@
-<?
+﻿<?
 
 function admin_autori() {
 
@@ -125,7 +125,7 @@ if($brojac==1) print "<p><font color=\"#FF0000\">Trenutno nema autora u bazi pod
 <br><br><hr><br>
 <script type="text/javascript" src="js/validateAutor.js"></script>
 <?
-	if ($_REQUEST["akcija"]=="edit") print '<b>Izmjena postojeceg autora:</b><br><br>';
+	if ($_REQUEST["akcija"]=="edit") print '<b>Izmjena postojećeg autora:</b><br><br>';
 	else print '<b>Dodavanje novog autora:</b><br><br>';?>
 	<?=genform("POST", "autor", "validateAutor");?>
 <?

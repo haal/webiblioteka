@@ -1,4 +1,4 @@
-<?
+Ôªø<?
 
 
 // uvodna stranica za javni dio sajta
@@ -44,10 +44,10 @@ function public_intro() {
 function login_forma() {
 	global $greska;
 	
-	// Redirekciju na isti URI vröimo samo ako je greöka = istek sesije
+	// Redirekciju na isti URI vrsimo samo ako je greska = istek sesije
 	$uri=$_SERVER['PHP_SELF'];
 
-	if ($greska == "Vaöa sesija je istekla. Molimo prijavite se ponovo." && !(strstr($_SERVER['REQUEST_URI'], "logout"))) {
+	if ($greska == "Va≈°a sesija je istekla. Molimo prijavite se ponovo." && !(strstr($_SERVER['REQUEST_URI'], "logout"))) {
 		$uri = $_SERVER['REQUEST_URI'];
 	}
 	
@@ -64,8 +64,8 @@ function login_forma() {
 		<form action="<?=$uri?>" method="POST">
 		<input type="hidden" name="loginforma" value="1">
 		<table border="0">
-			<tr><td>Korisnicko ime:</td></tr><tr><td><input type="text" name="login" size="15"></td></tr>
-			<tr><td>Sifra:</td><tr><td><input type="password" name="pass" size="15"></td></tr>
+			<tr><td>Korisniƒçko ime:</td></tr><tr><td><input type="text" name="login" size="15"></td></tr>
+			<tr><td>≈†ifra:</td><tr><td><input type="password" name="pass" size="15"></td></tr>
 			<tr></tr><tr></tr>
 			<tr><td colspan="2" align="center"><input type="submit" value="Kreni"></td></tr>
 			<tr></tr>

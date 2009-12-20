@@ -1,4 +1,4 @@
-<?
+﻿<?
 
 function bibliotekar_top10() {
 
@@ -11,7 +11,7 @@ $q01 = myquery("SELECT k.idknjigaopis, k.naslov, a.ime, a.prezime, count(i.idizn
 				WHERE p.idautor=a.idautor AND p.idknjigaopis=k.idknjigaopis AND pk.idknjigaopis=k.idknjigaopis AND i.idprimjerakknjige=pk.idprimjerakknjige
 				GROUP BY k.idknjigaopis ORDER BY broj DESC");
 	
-	print "<b>Knjige koje su najvise iznajmljivane:</b><br><br>";
+	print "<b>Knjige koje su najviše iznajmljivane:</b><br><br>";
 
 	$temp=mysql_num_rows($q01);
 	if($temp>0){

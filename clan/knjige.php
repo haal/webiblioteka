@@ -1,4 +1,4 @@
-<?
+﻿<?
 
 function clan_knjige() {
 

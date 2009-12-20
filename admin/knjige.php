@@ -1,4 +1,4 @@
-<?
+﻿<?
 
 function admin_knjige() {
 
@@ -170,7 +170,7 @@ $q03 = myquery("SELECT idZanr, naziv FROM zanr");
 ?><br><br><hr><br>
 <script type="text/javascript" src="js/validateKnjiga.js"></script>
 <?
-	if ($_REQUEST["akcija"]=="edit") print '<b>Izmjena postojece knjige:</b><br><br>';
+	if ($_REQUEST["akcija"]=="edit") print '<b>Izmjena postojeće knjige:</b><br><br>';
 	else print '<b>Dodavanje nove knjige:</b><br><br>';?>
 	<?=genform("POST", "knjiga", "validateKnjiga");?>
 <?
@@ -190,7 +190,7 @@ $q03 = myquery("SELECT idZanr, naziv FROM zanr");
 		print ">$temp</option>";
 	}
 	?></select>
-	<br><br>Zanr:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="zanr" class="default"><?
+	<br><br>Žanr:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="zanr" class="default"><?
 	while ($r03=mysql_fetch_row($q03)) {
 		print "<option value=\"$r03[0]\"";
 		if (($_REQUEST["akcija"]=="edit") && ($r03[0]==$zanr)) print " selected";

@@ -1,4 +1,4 @@
-<?
+﻿<?
 
 // LIB/BIBLIOTEKA - funkcije koje se koriste u kodu
 
@@ -43,9 +43,9 @@ function admin_meni($fj) {
 				&nbsp;&nbsp;<a href="?sta=admin/biblioteka">BIBLIOTEKA</a>
 				&nbsp;&nbsp;<a href="?sta=admin/poslovnice">POSLOVNICE</a>
 				<br>&nbsp;&nbsp;<a href="?sta=admin/knjige" >KNJIGE</a>
-				<br>&nbsp;&nbsp;<a href="?sta=admin/zanrovi" >ZANROVI</a>
+				<br>&nbsp;&nbsp;<a href="?sta=admin/zanrovi" >ŽANROVI</a>
 				<br>&nbsp;&nbsp;<a href="?sta=admin/autori" >AUTORI</a>
-				<br>&nbsp;&nbsp;<a href="?sta=admin/clanovi">CLANOVI</a>
+				<br>&nbsp;&nbsp;<a href="?sta=admin/clanovi">ČLANOVI</a>
 				<br>&nbsp;&nbsp;<a href="?sta=admin/bibliotekari">BIBLIOTEKARI</a>
 				<br><br>
 				<br>&nbsp;&nbsp;<a href="?sta=logout">Logout</a></font><br><br>
@@ -80,10 +80,10 @@ function bibliotekar_meni($fj) {
 		<td align="left">
 		<table border="0" width="100%">
 			<tr>
-				<td width="10%" valign="top" bgcolor="#FFFFFF" ><br><font size="-1" color="#FFFFFF">&nbsp;&nbsp;<a href="?sta=bibliotekar/vracanje">VRACANJE</a>
+				<td width="10%" valign="top" bgcolor="#FFFFFF" ><br><font size="-1" color="#FFFFFF">&nbsp;&nbsp;<a href="?sta=bibliotekar/vracanje">VRAćANJE</a>
 				<br>&nbsp;&nbsp;<a href="?sta=bibliotekar/odobravanje">ODOBRAVANJE</a>
 				<br>&nbsp;&nbsp;<a href="?sta=bibliotekar/iznajmljivanje">IZNAJMLJIVANJE</a>
-				<br>&nbsp;&nbsp;<a href="?sta=bibliotekar/clanovi">CLANOVI</a>
+				<br>&nbsp;&nbsp;<a href="?sta=bibliotekar/clanovi">ČLANOVI</a>
 				<br>&nbsp;&nbsp;<a href="?sta=bibliotekar/obavijesti">OBAVIJESTI</a>
 				<br>&nbsp;&nbsp;<a href="?sta=bibliotekar/top10">TOP 10</a>
 				<br>&nbsp;&nbsp;<a href="?sta=bibliotekar/knjige">KNJIGE</a>

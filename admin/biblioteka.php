@@ -1,4 +1,4 @@
-<?
+﻿<?
 
 function admin_biblioteka() {
 
@@ -29,7 +29,7 @@ if ($_REQUEST['akcija'] == 'izmijenibiblioteku') {
 <?
 
 
-print "<br><b>Uredjivanje informacija o biblioteci</b><br><br>";
+print "<br><b>Uređivanje informacija o biblioteci</b><br><br>";
 	
     print genform("POST","biblioteka","validateBiblioteka");
 	print '<input type="hidden" name="akcija" value="izmijenibiblioteku">';

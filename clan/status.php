@@ -1,4 +1,4 @@
-<?
+﻿<?
 //pregled knjiga koje je clan trenutno iznajmio ili rezervisao
 function clan_status() {
 
@@ -52,7 +52,7 @@ $q01 = myquery("SELECT k.idknjigaopis, k.naslov, a.ime, a.prezime, UNIX_TIMESTAM
 				FROM knjigaopis as k, autor as a, pisac as p, iznajmljivanje as i, primjerakknjige as pk
 				WHERE p.idautor=a.idautor AND p.idknjigaopis=k.idknjigaopis AND pk.idknjigaopis=k.idknjigaopis AND i.idprimjerakknjige=pk.idprimjerakknjige AND i.idosobaclan=$userid AND i.status=0 AND i.odobreno=0");
 	
-	print "<b>Knjige koje ste iznajmili i cekaju na odobravanje:</b><br><br>";
+	print "<b>Knjige koje ste iznajmili i čekaju na odobravanje:</b><br><br>";
 
 	$temp=mysql_num_rows($q01);
 	if($temp>0){
@@ -68,7 +68,7 @@ $q01 = myquery("SELECT k.idknjigaopis, k.naslov, a.ime, a.prezime, UNIX_TIMESTAM
 	</tr>
 
 <?
-} else print "<p><font color=\"#FF0000\">Trenutno nemate knjiga koje cekaju na odobravanje.</font></p><br>";
+} else print "<p><font color=\"#FF0000\">Trenutno nemate knjiga koje čekaju na odobravanje.</font></p><br>";
 
 $brojac=1;
 

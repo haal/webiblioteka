@@ -1,4 +1,4 @@
-<?
+﻿<?
 
 function admin_clanovi() {
 
@@ -131,7 +131,7 @@ if($clan){
 $q08 = myquery("SELECT o.idOsoba, o.ime, o.prezime FROM osoba as o, tiposobe as t WHERE t.idtiposobe=o.idosoba AND t.naziv='clan'");
 
 ?>
-<b>Clanovi koji su trenutno registrovani:</b><br><br>
+<b>Članovi koji su trenutno registrovani:</b><br><br>
 <table width="420" border="1" cellpadding="1" cellspacing="1" bordercolor="#000000">
 	<tr>
 	<td align="center" width=20><b>R.br.</b></td>
@@ -157,7 +157,7 @@ while ($clan=mysql_fetch_row($q08)) {
 }
 
 print "</table><br>";
-if($brojac==1) print "<p><font color=\"#FF0000\">Trenutno nema registrovanih clanova.</font></p><br>";
+if($brojac==1) print "<p><font color=\"#FF0000\">Trenutno nema registrovanih članova.</font></p><br>";
 print "<hr><br>";
 ?>
 <script type="text/javascript" src="js/validateClan.js"></script>
@@ -173,7 +173,7 @@ print "<hr><br>";
 	Prezime:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="prezime" size="30" value="<?=$prezime?>"><br>
 	JMBG:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="jmbg" size="13" maxlength="13" value="<?=$jmbg?>"><br>
 	Ulica i broj:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="adresa" size="50" value="<?=$adresa?>"><br>
-	Postanski broj:&nbsp;<input type="text" name="pbroj" size="5" maxlength="5" value="<?=$pbroj?>"><br>
+	Poštanski broj:&nbsp;<input type="text" name="pbroj" size="5" maxlength="5" value="<?=$pbroj?>"><br>
 	Grad:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="grad" size="30" value="<?=$grad?>"><br>
 	Telefon:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="telefon" size="15" value="<?=$telefon?>"><br>
 	E-mail:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="email" size="20" value="<?=$email?>">
@@ -185,8 +185,8 @@ print "<hr><br>";
 	}
 	?></select><br>
 	<br>
-	Korisnicko ime:<input type="text" name="username" size="20" value="<?=$username?>"><br>
-	Sifra:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="pass" size="20" value="<?=$pass?>"><br><br>
+	Korisničko ime:<input type="text" name="username" size="20" value="<?=$username?>"><br>
+	Šifra:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="pass" size="20" value="<?=$pass?>"><br><br>
 	Odobren:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="odobren" class="default"><?
 		print "<option value=";
 		print "0";
@@ -198,8 +198,8 @@ print "<hr><br>";
 	?></select><br><br>
 <?
 	if ($_REQUEST["akcija"]=="edit") print '<input type="submit" value="Potvrdi izmjene"  class="default">
-	<br><br><a href="?sta=admin/clanovi">Unos novog clana</a>';
-	else print '<input type="submit" value="Dodaj clana"  class="default">';
+	<br><br><a href="?sta=admin/clanovi">Unos novog člana</a>';
+	else print '<input type="submit" value="Dodaj člana"  class="default">';
 ?>
 </form>
 

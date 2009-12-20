@@ -1,4 +1,4 @@
-<?
+﻿<?
 
 function bibliotekar_vracanje() {
 
@@ -14,7 +14,7 @@ if ($_REQUEST['akcija'] == 'vratiknjigu') {
 		if($status == 1) 
 		{
 		$q03 = myquery("UPDATE iznajmljivanje SET datumVracanja=FROM_UNIXTIME('$vrijeme'), status='$status' WHERE idiznajmljivanje='$i[0]'");	
-		bibliotekalog("Vracen primjerak knjige id=$i[1]");
+		bibliotekalog("Vraćen primjerak knjige id=$i[1]");
 		
 		//nakon vracanja primjerka provjerava se da li je knjiga rezervisana, ako jeste onda se primjerak prosljedjuje prvoj osobi u redu cekanja
 		$q04 = myquery("SELECT r.idOsoba FROM rezervacija as r, primjerakknjige as p WHERE r.idKnjigaOpis=p.idknjigaopis AND p.idprimjerakknjige=$i[1] AND r.status=0");
@@ -30,13 +30,13 @@ if ($_REQUEST['akcija'] == 'vratiknjigu') {
 				$q07 = myquery("UPDATE rezervacija SET status=1 WHERE idrezervacija='$rezervacija'");
 				$q08 = myquery("UPDATE primjerakknjige SET status=1 WHERE idprimjerakknjige='$i[1]'");//u ovoj liniji se primjerak oznacava kao zauzet ponovo
 				
-				bibliotekalog("Iznajmljen primjerak clanu id=$clan (rezervacija)");
-				nicemessage("Iznajmljen primjerak clanu id=$clan (rezervacija)");
+				bibliotekalog("Iznajmljen primjerak članu id=$clan (rezervacija)");
+				nicemessage("Iznajmljen primjerak članu id=$clan (rezervacija)");
 			}
 		}
 		
 	}
-	nicemessage("Vracanje primjeraka registrovano");
+	nicemessage("Vraćanje primjeraka registrovano");
 }
 
 
@@ -52,10 +52,10 @@ $q01 = myquery("SELECT idIznajmljivanje, UNIX_TIMESTAMP(datumPosudjivanja), idOs
 <table width="500" border="1" cellpadding="1" cellspacing="1" bordercolor="#000000">
 	<tr>
 	<td width=60 align="center"><b>ID</b></td>
-	<td width=170 align="center"><b>Datum posudjivanja</b></td>
+	<td width=170 align="center"><b>Datum posuđivanja</b></td>
 	<td width=110 align="center"><b>ID primjerka</b></td>
-    <td width=80 align="center"><b>ID clana</b></td>
-    <td width=80 align="center"><b>Vraceno</b></td>
+    <td width=80 align="center"><b>ID člana</b></td>
+    <td width=80 align="center"><b>Vraćeno</b></td>
 	</tr>
 
 <?

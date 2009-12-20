@@ -1,4 +1,4 @@
-<?
+﻿<?
 
 function bibliotekar_odobravanje() {
 
@@ -25,16 +25,16 @@ $q01 = myquery("SELECT idIznajmljivanje, UNIX_TIMESTAMP(datumPosudjivanja), idOs
 
 ?>
 
-<b>Iznajmljivanja koja cekaju da budu odobrena:</b>
+<b>Iznajmljivanja koja čekaju da budu odobrena:</b>
 <?=genform("POST");?>
 <input type="hidden" name="akcija" value="odobri">
 <br><br>
 <table width="500" border="1" cellpadding="1" cellspacing="1" bordercolor="#000000">
 	<tr>
 	<td width=60 align="center"><b>ID</b></td>
-	<td width=170 align="center"><b>Datum posudjivanja</b></td>
+	<td width=170 align="center"><b>Datum posuđivanja</b></td>
 	<td width=110 align="center"><b>ID primjerka</b></td>
-    <td width=80 align="center"><b>ID clana</b></td>
+    <td width=80 align="center"><b>ID člana</b></td>
     <td width=80 align="center"><b>Odobreno</b></td>
 	</tr>
 

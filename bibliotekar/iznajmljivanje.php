@@ -1,4 +1,4 @@
-<?
+﻿<?
 
 function bibliotekar_iznajmljivanje() {
 
@@ -13,8 +13,8 @@ if ($_REQUEST['akcija'] == 'iznajmi') {
 	
 	$q03 = myquery("INSERT INTO iznajmljivanje (idOsobaClan, idosobabibliotekar, idPrimjerakKnjige, status, odobreno) VALUES ('$clan','$userid','$primjerak',0,1)");
 	//iznajmljivanje od strane bibliotekara je automatski odobreno, odobreno=1
-	bibliotekalog("Primjerak idprimjerak=$primjerak uspjesno iznajmljen clanu idclan=$clan");
-	nicemessage("Primjerak id=$primjerak uspjesno iznajmljen clanu id=$clan");
+	bibliotekalog("Primjerak idprimjerak=$primjerak uspješno iznajmljen članu idclan=$clan");
+	nicemessage("Primjerak id=$primjerak uspješno iznajmljen članu id=$clan");
 
 }
 
@@ -26,7 +26,7 @@ if ($_REQUEST['akcija'] == 'iznajmi') {
 	<input type="hidden" name="akcija" value="iznajmi">
 
 	Iznajmi primjerak id =&nbsp;<input type="text" name="primjerak" size="2">
-	clanu koji ima id =&nbsp;<input type="text" name="clan" size="2">
+	članu koji ima id =&nbsp;<input type="text" name="clan" size="2">
 	
 	<br><br><input type="submit" value="Iznajmi"  class="default"><br><br>
 </form>
