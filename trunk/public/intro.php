@@ -69,7 +69,7 @@ function login_forma() {
 			<tr></tr><tr></tr>
 			<tr><td colspan="2" align="center"><input type="submit" value="Kreni"></td></tr>
 			<tr></tr>
-			<tr><td colspan="2" align="center"><a href="public/registracija.php">Registracija</td></tr></table>
+			<tr><td colspan="2" align="center"><a href="?sta=public/registracija">Registracija</td></tr></table>
 			<tr><td>
 			<?
 				zadnji_komentari();
