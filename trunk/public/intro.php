@@ -70,6 +70,10 @@ function login_forma() {
 			<tr><td colspan="2" align="center"><input type="submit" value="Kreni"></td></tr>
 			<tr></tr>
 			<tr><td colspan="2" align="center"><a href="public/registracija.php">Registracija</td></tr></table>
+			<tr><td>
+			<?
+				zadnji_komentari();
+			?>
 		</form>
 		</td>
 	</tr>
@@ -85,7 +89,7 @@ function zadnje_obavijesti() {
 	$q01 = myquery("SELECT o.idObavijest, o.naslov, UNIX_TIMESTAMP(o.datum) as vrijeme, p.naziv, o.tekst 
 					FROM obavijest o, poslovnica p 
 					WHERE o.idPoslovnica=p.idPoslovnica
-					ORDER BY vrijeme DESC");
+					ORDER BY vrijeme DESC LIMIT 0,15");
 	
 	$brojac=1;
 
@@ -140,7 +144,7 @@ function top_knjige() {
 	print "<br><br>";
 	
 	$brojac=1;
-	print "<h3>NAJCITANIJE KNJIGE</h3>";
+	print "<h3>NAJČITANIJE KNJIGE</h3>";
 	while ($knjiga=mysql_fetch_row($q03)) {
 		$link="<a href=\"?sta=public/knjiga&knjiga=".$knjiga[0]."\">".$knjiga[1]."</a>";
 		print $brojac.". ".$link." - ".$knjiga[3]." ".$knjiga[2]."<br>";
@@ -148,5 +152,30 @@ function top_knjige() {
 	}
 	
 				
+}
+
+function zadnji_komentari() {
+
+	$q01 = myquery("SELECT o.idOcjena, o.komentar, k.idKnjigaOpis, k.naslov
+					FROM ocjena o, knjigaopis k
+					WHERE o.komentar <> \"\" AND o.idKnjigaOpis=k.idKnjigaOpis
+					ORDER BY o.idOcjena DESC 
+					LIMIT 0,5");
+	
+	$temp=mysql_num_rows($q01);
+	if ($temp>0){
+	
+	$brojac=1;
+
+	print "<h3>ZADNJI KOMENTARI</h3>";
+	while ($komentar=mysql_fetch_row($q01)) {
+		$link="<a href=\"?sta=public/knjiga&knjiga=".$komentar[2]."\">".$komentar[3]."</a>";
+		print $link."<br>";
+		print "<i>\"".$komentar[1]."\"</i>"."<br><br>";
+		$brojac++;
+	}
+	}
+	else print "Nema unesenih komentara.";
+	
 }
 ?>

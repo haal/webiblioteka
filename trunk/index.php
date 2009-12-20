@@ -132,7 +132,7 @@ if ($naslov=="") $naslov = "Webiblioteka"; // default naslov
 
 <table width="100%" border="1" cellspacing="0" cellpadding="0">
 	<tr>
-			<td width="50%" align="center" bgcolor="#000000"><br>
+			<td width="50%" align="centers" bgcolor="#000000"><br>
 			<font color="#FFFFFF" size="5">
 			<b><?=$conf_appname?> <?=$conf_appversion?>&nbsp;</b></font><br/>
 			<font color="#FFFFFF" size="1">
