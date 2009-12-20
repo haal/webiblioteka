@@ -56,12 +56,103 @@ $q02=myquery("SELECT a.ime, a.prezime FROM autor as a, pisac as p, knjigaopis as
 <td width="150"><font size="-1"><b>Opis:<b></font></td>
 <td width="550"><font size="-1"><?=$opis?></font></td>
 </tr>
-</table>
-
-
-
+</table><br><hr><br>
 
 <?
+
+
+$q03 = myquery("SELECT pk.idprimjerakknjige, i.idosobaclan FROM primjerakknjige as pk, iznajmljivanje as i WHERE pk.idknjigaopis=$knjiga AND i.idprimjerakknjige=pk.idprimjerakknjige");
+	
+?>
+	<b>Primjerci knjige koji su iznajmljeni:</b><br><br>
+
+	<table width=220" border="1" cellpadding="1" cellspacing="1" bordercolor="#000000">
+	<tr>
+	<td width=20><b>R.br.</b></td>
+	<td width=100 align="center"><b>ID primjerka</b></td>
+	<td width=100 align="center"><b>ID clana</b></td>
+	</tr>
+
+<?
+
+$brojac=1;
+
+while ($k=mysql_fetch_row($q03)) {
+	
+?>
+	<tr>
+	<td><? print "$brojac"; ?></td>
+	<td align="center"><?=$k[0]; ?></td>
+	<td align="center"><?=$k[1]; ?></td>
+	</tr>
+
+<?php
+$brojac++;
+}
+
+print "</table><br><hr><br>";
+
+
+$q04 = myquery("SELECT idprimjerakknjige FROM primjerakknjige WHERE status=0 AND idknjigaopis=$knjiga");
+	
+?>
+	<b>Primjerci knjige koji nisu iznajmljeni:</b><br><br>
+
+	<table width=140" border="1" cellpadding="1" cellspacing="1" bordercolor="#000000">
+	<tr>
+	<td width=20><b>R.br.</b></td>
+	<td width=120 align="center"><b>ID primjerka</b></td>
+	</tr>
+
+<?
+
+$brojac=1;
+
+while ($k=mysql_fetch_row($q04)) {
+	
+?>
+	<tr>
+	<td><? print "$brojac"; ?></td>
+	<td align="center"><?=$k[0]; ?></td>
+	</tr>
+
+<?php
+$brojac++;
+}
+
+print "</table><br><hr><br>";
+
+
+$q03 = myquery("SELECT o.ime, o.prezime, o.idosoba FROM osoba as o, rezervacija as r WHERE r.idosoba=o.idosoba AND r.idknjigaopis=$knjiga AND r.status=0");
+	
+?>
+	<b>Lista cekanja (clanovi koji su rezervisali knjigu):</b><br><br>
+
+	<table width=320" border="1" cellpadding="1" cellspacing="1" bordercolor="#000000">
+	<tr>
+	<td width=20><b>R.br.</b></td>
+	<td width=200 align="center"><b>Ime i prezime</b></td>
+	<td width=100 align="center"><b>ID clana</b></td>
+	</tr>
+
+<?
+
+$brojac=1;
+
+while ($k=mysql_fetch_row($q03)) {
+	
+?>
+	<tr>
+	<td><? print "$brojac"; ?></td>
+	<td align="center"><? print $k[0]." ".$k[1]; ?></td>
+	<td align="center"><? print $k[2]; ?></td>
+	</tr>
+
+<?php
+$brojac++;
+}
+
+print "</table><br>";
 
 }
 
