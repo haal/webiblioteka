@@ -118,7 +118,13 @@ if ($naslov=="") $naslov = "Webiblioteka"; // default naslov
 	<title><?=$naslov?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link href="css/biblioteka.css" rel="stylesheet" type="text/css" />
-</head><?
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style></head><?
 
 
 
@@ -128,9 +134,10 @@ if ($naslov=="") $naslov = "Webiblioteka"; // default naslov
 // template
 
 ?>
-<body topmargin="0" leftmargin="0" bottommargin="0" rightmargin="0" bgcolor="#FFFFFF">
+<body topmargin="0" leftmargin="0" bottommargin="0" rightmargin="0">
 <img src="img/logo.jpg" alt="logo" width="400">   
-      </img><br><hr>
+      </img><br>
+      <hr>
 <table width="100%" border="0" cellspacing="0" cellpadding="4">
 	<tr><td valign="top" align="left">
 
