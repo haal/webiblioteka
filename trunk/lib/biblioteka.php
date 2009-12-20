@@ -85,6 +85,8 @@ function bibliotekar_meni($fj) {
 				<br>&nbsp;&nbsp;<a href="?sta=bibliotekar/iznajmljivanje">IZNAJMLJIVANJE</a>
 				<br>&nbsp;&nbsp;<a href="?sta=bibliotekar/clanovi">CLANOVI</a>
 				<br>&nbsp;&nbsp;<a href="?sta=bibliotekar/obavijesti">OBAVIJESTI</a>
+				<br>&nbsp;&nbsp;<a href="?sta=bibliotekar/top10">TOP 10</a>
+				<br>&nbsp;&nbsp;<a href="?sta=bibliotekar/knjige">KNJIGE</a>
 				<br><br>
 				<br>&nbsp;&nbsp;<a href="?sta=logout">Logout</a></font><br><br>
 				</td>
