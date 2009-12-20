@@ -1,4 +1,4 @@
-<?
+﻿<?
 
 function public_knjiga() {
 
