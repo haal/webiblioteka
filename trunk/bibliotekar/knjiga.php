@@ -1,6 +1,6 @@
 <?
 
-function clan_knjiga() {
+function bibliotekar_knjiga() {
 
 global $userid;
 
