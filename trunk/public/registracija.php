@@ -25,20 +25,52 @@ if ($_REQUEST["akcija"]=="reg"){
 
 ?>
 
-    <?=genform("POST")?>
-	<input type="hidden" name="akcija" value="reg">
-	Korisničko ime:<input type="text" name="username" size="20"><br>
-	Šifra: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="pass" size="20"><br><br>
-	Ime: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="ime" size="30"><br>
-	Prezime: <input type="text" name="prezime" size="30"><br>
-	JMBG: &nbsp;&nbsp;<input type="text" name="jmbg" size="13" maxlength="13"><br>
-	Ulica i broj: <input type="text" name="adresa" size="30"><br>
-	Poštanski broj: <input type="text" name="pbroj" size="5" maxlength="5"><br>
-	Grad: &nbsp;&nbsp;&nbsp;<input type="text" name="grad" size="20"><br>
-	Telefon: <input type="text" name="telefon" size="15"><br>
-	E-mail: &nbsp;<input type="text" name="email" size="20"><br>
-    <input type="submit" value="Registruj me">
-	</form>
+    <?=genform("POST")?><input type="hidden" name="akcija" value="reg">
+
+	<table width="600" border="0">
+	<tr>
+	<td width="150">Korisničko ime:</td>
+	<td align="left"><input type="text" name="username" size="20"></td>
+	</tr>
+	<tr>
+	<td width="150">Šifra:</td>
+	<td align="left"><input type="password" name="pass" size="20"></td>
+	</tr><tr></tr>
+	<tr>
+	<td width="150">Ime:</td>
+	<td align="left"><input type="text" name="ime" size="30"></td>
+	</tr>
+	<tr>
+	<td width="150">Prezime:</td>
+	<td align="left"><input type="text" name="prezime" size="30"></td>
+	</tr>
+	<tr>
+	<td width="150">JMBG:</td>
+	<td align="left"><input type="text" name="jmbg" size="13" maxlength="13"></td>
+	</tr>
+	<tr>
+	<td width="150">Ulica i broj:</td>
+	<td align="left"><input type="text" name="adresa" size="30"><br></td>
+	</tr>
+	<tr>
+	<td width="150">Poštanski broj:</td>
+	<td align="left"><input type="text" name="pbroj" size="5" maxlength="5"></td>
+	</tr>
+	<tr>
+	<td width="150">Grad:</td>
+	<td align="left"><input type="text" name="grad" size="20"></td>
+	</tr>
+	<tr>
+	<td width="150">Telefon:</td>
+	<td align="left"><input type="text" name="telefon" size="15"></td>
+	</tr>
+	<tr>
+	<td width="150">E-mail:</td>
+	<td align="left"><input type="text" name="email" size="20"></td>
+	</tr><tr>
+    <td align="right"><br><input type="submit" value="Registruj me"></td>
+	</table>
+	<br><br><br><a href="?sta=public/intro"><<< Nazad</a></form>
 
 <?
 
