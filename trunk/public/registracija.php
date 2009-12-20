@@ -1,4 +1,4 @@
-<?
+﻿<?
 //function registerUser() {
 	require("../lib/config.php");
 	require("../lib/biblioteka.php");
@@ -38,13 +38,13 @@ if ($_REQUEST["akcija"]=="reg"){
    <h1>Registracija</h1><br>
        <form action="<?=$_SERVER['PHP_SELF'];?>" method="post" >
 			<input type="hidden" name="akcija" value="reg">
-			Korisnicko ime:<input type="text" name="username" size="20"><br>
-			Sifra: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="pass" size="20"><br><br>
+			Korisničko ime:<input type="text" name="username" size="20"><br>
+			Šifra: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="pass" size="20"><br><br>
 			Ime: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="ime" size="30"><br>
 		   Prezime: <input type="text" name="prezime" size="30"><br>
 		   JMBG: &nbsp;&nbsp;<input type="text" name="jmbg" size="13" maxlength="13"><br>
 		   Ulica i broj: <input type="text" name="adresa" size="30"><br>
-		   Postanski broj: <input type="text" name="pbroj" size="5" maxlength="5"><br>
+		   Poštanski broj: <input type="text" name="pbroj" size="5" maxlength="5"><br>
 		   Grad: &nbsp;&nbsp;&nbsp;<input type="text" name="grad" size="20"><br>
 		   Telefon: <input type="text" name="telefon" size="15"><br>
 		   E-mail: &nbsp;<input type="text" name="email" size="20"><br>

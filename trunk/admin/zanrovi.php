@@ -1,4 +1,4 @@
-<?
+﻿<?
 
 function admin_zanrovi() {
 
@@ -83,7 +83,7 @@ $q01 = myquery("SELECT z.idZanr, z.Naziv FROM zanr z");
 
 ?>
 
-<b>Zanrovi koji su trenutno uneseni u bazu podataka:</b>
+<b>Žanrovi koji su trenutno uneseni u bazu podataka:</b>
 <br><br>
 <table width="380" border="1" cellpadding="1" cellspacing="1" bordercolor="#000000">
 	<tr>
@@ -122,8 +122,8 @@ if($brojac==1) print "<p><font color=\"#FF0000\">Trenutno nema zanrova u bazi po
 <br><br><hr><br>
 <script type="text/javascript" src="js/validateZanr.js"></script>
 <?
-	if ($_REQUEST["akcija"]=="edit") print '<b>Izmjena postojeceg zanra:</b><br><br>';
-	else print '<b>Dodavanje novog zanra:</b><br><br>';?>
+	if ($_REQUEST["akcija"]=="edit") print '<b>Izmjena postojećeg žanra:</b><br><br>';
+	else print '<b>Dodavanje novog žanra:</b><br><br>';?>
 	<?=genform("POST", "zanr", "validateZanr");?>
 <?
 	if ($_REQUEST["akcija"]=="edit") print '<input type="hidden" name="akcija" value="izmijenizanr">';
@@ -133,7 +133,7 @@ if($brojac==1) print "<p><font color=\"#FF0000\">Trenutno nema zanrova u bazi po
 	Opis:<br><textarea name="opis" cols="50" rows="10" ><?=$opis?></textarea><br><br>
 	<?
 	if ($_REQUEST["akcija"]=="edit") print '<input type="submit" value="Potvrdi izmjene"  class="default"><br><br><a href="?sta=admin/zanrovi"><<< Nazad</a>';
-	else print '<input type="submit" value="Dodaj zanr"  class="default">';
+	else print '<input type="submit" value="Dodaj žanr"  class="default">';
 ?>
 </form>
 

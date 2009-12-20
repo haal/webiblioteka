@@ -1,4 +1,4 @@
-<?
+﻿<?
 
 function clan_ocjena() {
 
@@ -15,7 +15,7 @@ if ($_REQUEST['akcija'] == 'ocijeni') {
 	$q03 = myquery("DELETE FROM ocjena WHERE idosoba=$userid AND idknjigaopis=$knjiga");
 	
 	$q05 = myquery("INSERT INTO ocjena ( vrijednost, idosoba, komentar, idknjigaopis ) VALUES ('$ocjena','$userid','$komentar','$knjiga')");
-	bibliotekalog("Uspjesno ocijenjena knjiga");
+	bibliotekalog("Uspješno ocijenjena knjiga");
 	
 ?>
 	<script language="JavaScript">

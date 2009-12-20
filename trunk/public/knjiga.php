@@ -49,7 +49,7 @@ $q02=myquery("SELECT a.ime, a.prezime FROM autor as a, pisac as p, knjigaopis as
 <td width="550"><font size="-1"><?=$godina?></font></td>
 </tr>
 <tr>
-<td width="150"><font size="-1"><b>Zanr:<b></font></td>
+<td width="150"><font size="-1"><b>Žanr:<b></font></td>
 <td width="550"><font size="-1"><?=$zanr?></font></td>
 </tr>
 <tr>

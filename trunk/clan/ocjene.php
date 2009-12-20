@@ -1,4 +1,4 @@
-<?
+﻿<?
 
 function clan_ocjene() {
 
@@ -22,7 +22,7 @@ $q01 = myquery("SELECT DISTINCT k.idknjigaopis, k.naslov, a.ime, a.prezime
 	<td width=20><b>R.br.</b></td>
 	<td width=350><b>Naslov knjige</b></td>
 	<td width=150 align="center"><b>Autor</b></td>
-	<td width=80 align="center"><b>Vasa ocjena</b></td>
+	<td width=80 align="center"><b>Vaša ocjena</b></td>
 	<td width=80 align="center"><b>Srednja ocjena</b></td>
 	<td width=140 align="center"><b>Opcije</b></td>
 	</tr>

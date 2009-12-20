@@ -1,4 +1,4 @@
-<?
+﻿<?
 
 function bibliotekar_knjige() {
 
@@ -26,7 +26,7 @@ Odaberi tip pretrage:<select name="tippretrage" class="default"><?
 		print ">Ime autora</option>";
 	?></select><br><br>
 <input type="text" name="vrijednost" size="50">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="submit" value="Search"  class="default"><br><br><hr><br>
+<input type="submit" value="Traži"  class="default"><br><br><hr><br>
 
 
 </form>

@@ -1,4 +1,4 @@
-<?
+﻿<?
 
 function bibliotekar_knjiga() {
 
@@ -49,7 +49,7 @@ $q02=myquery("SELECT a.ime, a.prezime FROM autor as a, pisac as p, knjigaopis as
 <td width="550"><font size="-1"><?=$godina?></font></td>
 </tr>
 <tr>
-<td width="150"><font size="-1"><b>Zanr:<b></font></td>
+<td width="150"><font size="-1"><b>Žanr:<b></font></td>
 <td width="550"><font size="-1"><?=$zanr?></font></td>
 </tr>
 <tr>
@@ -73,7 +73,7 @@ $q03 = myquery("SELECT pk.idprimjerakknjige, i.idosobaclan FROM primjerakknjige 
 	<tr>
 	<td width=20><b>R.br.</b></td>
 	<td width=100 align="center"><b>ID primjerka</b></td>
-	<td width=100 align="center"><b>ID clana</b></td>
+	<td width=100 align="center"><b>ID člana</b></td>
 	</tr>
 
 <?
@@ -129,13 +129,13 @@ print "</table><br><hr><br>";
 $q03 = myquery("SELECT o.ime, o.prezime, o.idosoba FROM osoba as o, rezervacija as r WHERE r.idosoba=o.idosoba AND r.idknjigaopis=$knjiga AND r.status=0");
 	
 ?>
-	<b>Lista cekanja (clanovi koji su rezervisali knjigu):</b><br><br>
+	<b>Lista čekanja (članovi koji su rezervisali knjigu):</b><br><br>
 
 	<table width=320" border="1" cellpadding="1" cellspacing="1" bordercolor="#000000">
 	<tr>
 	<td width=20><b>R.br.</b></td>
 	<td width=200 align="center"><b>Ime i prezime</b></td>
-	<td width=100 align="center"><b>ID clana</b></td>
+	<td width=100 align="center"><b>ID člana</b></td>
 	</tr>
 
 <?

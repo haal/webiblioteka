@@ -1,4 +1,4 @@
-<?
+﻿<?
 
 function admin_bibliotekari() {
 
