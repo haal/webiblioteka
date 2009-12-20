@@ -129,18 +129,8 @@ if ($naslov=="") $naslov = "Webiblioteka"; // default naslov
 
 ?>
 <body topmargin="0" leftmargin="0" bottommargin="0" rightmargin="0" bgcolor="#FFFFFF">
-
-<table width="100%" border="1" cellspacing="0" cellpadding="0">
-	<tr>
-			<td width="50%" align="centers" bgcolor="#000000"><br>
-			<font color="#FFFFFF" size="5">
-			<b><?=$conf_appname?> <?=$conf_appversion?>&nbsp;</b></font><br/>
-			<font color="#FFFFFF" size="1">
-			&nbsp;&nbsp;&nbsp;</font>
-			</td>
-	</tr>
-</table>
-
+<img src="img/logo.jpg" alt="logo" width="400">   
+      </img><br><hr>
 <table width="100%" border="0" cellspacing="0" cellpadding="4">
 	<tr><td valign="top" align="left">
 
@@ -200,7 +190,7 @@ else
 </table>
 
 <p>&nbsp;</p>
-<p>&nbsp;</p><br><br><br><br><br><br><br><br><br><br><br><br>
+<p>&nbsp;</p><br><br><br><br>
 <p align="center">Copyright (c) 2009 Alešević Haris, Herić Admir</p>
 
 </body>
