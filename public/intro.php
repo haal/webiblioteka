@@ -1,4 +1,4 @@
-﻿<?
+<?
 
 
 // uvodna stranica za javni dio sajta
