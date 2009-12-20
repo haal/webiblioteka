@@ -31,6 +31,9 @@ array("bibliotekar/iznajmljivanje", "Iznajmljivanje - standardni korisnici", "Iz
 array("bibliotekar/obavijesti", "Upravljanje obavijestima", "Bibliotekar - Obavijesti", "B"),
 array("bibliotekar/vracanje", "Vracanje knjiga - online korisnici", "Vracanje", "B"),
 array("bibliotekar/odobravanje", "Odobravanje knjiga - online korisnici", "Odobravanje", "B"),
+array("bibliotekar/knjige", "Pretraga knjiga", "Knjige", "B"),
+array("bibliotekar/knjiga", "Detalji knjige", "Knjiga", "B"),
+array("bibliotekar/top10", "Top 10 knjiga", "Top 10", "B"),
 
 
 
