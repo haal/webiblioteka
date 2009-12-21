@@ -21,11 +21,15 @@ if ($_REQUEST["akcija"]=="reg"){
 	$auth = mysql_result($q02,0,0);
 	$q03 = myquery("INSERT INTO osoba ( Ime, Prezime, JMBG, UlicaIBroj, PostanskiBroj, Grad, Telefon, email, idauth, idposlovnica)
 	VALUES ('$ime', '$prezime', '$jmbg', '$adresa', '$pbroj', '$grad', '$telefon', '$email', '$auth', 1)");
+	$q04 = myquery("SELECT idOsoba FROM osoba WHERE idAuth='$auth'");
+	$idOsoba = mysql_result($q04,0,0);
+	$q05 = myquery("INSERT INTO tiposobe (idtiposobe, naziv) VALUES ('$idOsoba','clan')");
 }
 
 ?>
+<script type="text/javascript" src="js/validateClan.js"></script>
 
-    <?=genform("POST")?><input type="hidden" name="akcija" value="reg">
+    <?=genform("POST", "registracijaaclana", "validateClan")?><input type="hidden" name="akcija" value="reg">
 
 	<table width="600" border="0">
 	<tr>
