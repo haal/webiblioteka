@@ -1,4 +1,4 @@
-function validateAutor(theForm) {
+﻿function validateAutor(theForm) {
 	var reason = "";
 
   reason += validateImePrezime(theForm.ime);
@@ -6,7 +6,7 @@ function validateAutor(theForm) {
   reason += validateEmpty(theForm.biografija);
      
   if (reason != "") {
-    alert("Molimo popravite sljedece greske:\n" + reason);
+    alert("Molimo popravite sljedeće greške:\n" + reason);
     return false;
   }
 
@@ -15,7 +15,7 @@ function validateAutor(theForm) {
 
 function validateImePrezime(fld) {
     var error = "";
-	var regImePrez=/^[a-zA-Z]+$/;
+	var regImePrez=/^[ABCČĆDĐEFGHIJKLMNOPRSŠTUVZŽabcčćdđefghijklmnoprsštuvzž]+$/;
   
     if (fld.value.length == 0) {
         fld.style.background = 'Yellow'; 

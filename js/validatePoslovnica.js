@@ -1,4 +1,4 @@
-function validatePoslovnica(theForm) {
+﻿function validatePoslovnica(theForm) {
 	var reason = "";
 
   reason += validateEmpty(theForm.naziv);
@@ -11,7 +11,7 @@ function validatePoslovnica(theForm) {
   
      
   if (reason != "") {
-    alert("Molimo popravite sljedece greske:\n" + reason);
+    alert("Molimo popravite sljedeće greške:\n" + reason);
     return false;
   }
 
@@ -36,11 +36,11 @@ function validateZipCode(fld) {
 	
 	if (fld.value == "") {
 		fld.style.background = 'Yellow';
-        error = "Niste unijeli postanski broj.\n";
+        error = "Niste unijeli poštanski broj.\n";
     }
 	else if(fld.value.search(/\d{5}/)==-1){
 		fld.style.background = 'Yellow';
-		error = "Niste unijeli validan postanski broj. Primjer: 77000.\n";
+		error = "Niste unijeli validan poštanski broj. Primjer: 77000.\n";
 	}
 	return error;
 }
@@ -64,7 +64,7 @@ function validateEmail(fld) {
         error = "Unesite validnu e-mail adresu.\n";
     } else if (fld.value.match(illegalChars)) {
         fld.style.background = 'Yellow';
-        error = "E-mail sadrzi nedozvoljene znakove.\n";
+        error = "E-mail sadrži nedozvoljene znakove.\n";
     } else {
         fld.style.background = 'White';
     }

@@ -53,8 +53,9 @@ $q02=myquery("SELECT a.ime, a.prezime FROM autor as a, pisac as p, knjigaopis as
 <td width="550"><font size="-1"><?=$zanr?></font></td>
 </tr>
 <tr>
-<td width="150"><font size="-1"><b>Opis:<b></font></td>
-<td width="550"><font size="-1"><?=$opis?></font></td>
+<td width="150"><font size="-1"><b>Opis:<b></font><br><br><br><br>
+<img src="img/<?=$knjiga?>.jpg" alt="slika<?=$knjiga?>"></img>
+</td><td width="550"><font size="-1"><?=$opis?></font></td>
 </tr>
 </table>
 <br><br><a href="?sta=public/intro"><<< Nazad</a>

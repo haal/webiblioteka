@@ -1,11 +1,11 @@
-function validateObavijest(theForm) {
+﻿function validateObavijest(theForm) {
 	var reason = "";
 
   reason += validateEmpty(theForm.naslov);
   reason += validateEmpty(theForm.tekst);
      
   if (reason != "") {
-    alert("Molimo popravite sljedece greske:\n" + reason);
+    alert("Molimo popravite sljedeće greške:\n" + reason);
     return false;
   }
 

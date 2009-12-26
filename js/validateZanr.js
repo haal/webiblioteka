@@ -1,11 +1,11 @@
-function validateZanr(theForm) {
+﻿function validateZanr(theForm) {
 	var reason = "";
 
   reason += validateEmpty(theForm.naziv);
   reason += validateEmpty(theForm.opis);
      
   if (reason != "") {
-    alert("Molimo popravite sljedece greske:\n" + reason);
+    alert("Molimo popravite sljedeće greške:\n" + reason);
     return false;
   }
 
