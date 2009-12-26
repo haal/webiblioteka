@@ -1,10 +1,10 @@
-function validateClan(theForm) {
+﻿function validateClan(theForm) {
 	var reason = "";
 
   reason += validateImePrezime(theForm.ime);
   reason += validateImePrezime(theForm.prezime);
   reason += validateJMBG(theForm.jmbg);
-  reason += validateAdresa(theForm.adresa);
+  reason += validateEmpty(theForm.adresa);
   reason += validateZipCode(theForm.pbroj);
   reason += validateEmpty(theForm.grad);
   reason += validateEmail(theForm.email);
@@ -14,7 +14,7 @@ function validateClan(theForm) {
     
       
   if (reason != "") {
-    alert("Molimo popravite sljedece greske:\n" + reason);
+    alert("Molimo popravite sljedeće greške:\n" + reason);
     return false;
   }
 
@@ -35,14 +35,14 @@ function validateEmpty(fld) {
 
 function validateImePrezime(fld) {
     var error = "";
-	var regImePrez=/^[a-zA-Z]+$/;
+	var regImePrez=/^[ABCČĆDĐEFGHIJKLMNOPRSŠTUVZŽabcčćdđefghijklmnoprsštuvzž]+$/;
   
     if (fld.value.length == 0) {
         fld.style.background = 'Yellow'; 
         error = "Niste unijeli polje: ".concat(fld.name).concat(".\n");
     } else if (!fld.value.match(regImePrez)) {
 		fld.style.background = 'Yellow'; 
-        error = "Polje ".concat(fld.name).concat(" moze sadrzavati samo slova.\n");
+        error = "Polje ".concat(fld.name).concat(" može sadržavati samo slova.\n");
     }
     return error;   
 }
@@ -55,7 +55,7 @@ function validateJMBG(fld) {
         error = "Niste unijeli JMBG.\n";
     } else if(fld.value.search(/\d{13}/)==-1){
 		fld.style.background = 'Yellow';
-		error = "Maticni broj mora imati tacno 13 cifara.\n";
+		error = "Matični broj mora imati tačno 13 cifara.\n";
 	} 
 	else {
         fld.style.background = 'White';
@@ -63,44 +63,19 @@ function validateJMBG(fld) {
     return error;   
 }
 
-/*function testJMBG(fld) {
-	var cifre=new Array();
-	
-	var i=0;
-	for (i=0;i<13;i++){
-		cifre[i]=parseInt(fld.value.charAt(i));
-	}
-	
-	return true;
-}*/
-
 function validateZipCode(fld) {
 	var error = ""; 
 	
 	if (fld.value == "") {
 		fld.style.background = 'Yellow';
-        error = "Niste unijeli postanski broj.\n";
+        error = "Niste unijeli poštanski broj.\n";
     }
 	else if(fld.value.search(/\d{5}/)==-1){
 		fld.style.background = 'Yellow';
-		error = "Niste unijeli validan postanski broj. Primjer: 77000.\n";
+		error = "Niste unijeli validan poštanski broj. Primjer: 77000.\n";
 	}
 	return error;
 }
-
-
-function validateAdresa(fld) {
-    var error = "";
- 
-    if (fld.value == "") {
-        fld.style.background = 'Yellow'; 
-        error = "Niste unijeli adresu.\n";
-    } else {
-        fld.style.background = 'White';
-    } 
-    return error;
-}
-
 
 
 function trim(s){
@@ -121,7 +96,7 @@ function validateEmail(fld) {
         error = "Unesite validnu e-mail adresu.\n";
     } else if (fld.value.match(illegalChars)) {
         fld.style.background = 'Yellow';
-        error = "E-mail sadrzi nedozvoljene znakove.\n";
+        error = "E-mail sadrži nedozvoljene znakove.\n";
     } else {
         fld.style.background = 'White';
     }
@@ -141,7 +116,7 @@ function validateTelefon(fld) {
 	}
 	else if (fld.value.length != 11) {
 		fld.style.background = 'Yellow';
-		error = "aNiste unijeli validan telefonski broj. Unesite broj u formatu: xxx-xxx-xxx.\n";
+		error = "Niste unijeli validan telefonski broj. Unesite broj u formatu: xxx-xxx-xxx.\n";
 	}
 	
     return error;
@@ -153,13 +128,13 @@ function validateUsername(fld) {
  
     if (fld.value == "") {
         fld.style.background = 'Yellow'; 
-        error = "Niste unijeli korisnicko ime.\n";
+        error = "Niste unijeli korisničko ime.\n";
     } else if ((fld.value.length < 5) || (fld.value.length > 15)) {
         fld.style.background = 'Yellow'; 
-        error = "Duzina korisnickog imena mora biti izmedju 5 i 15 znakova.\n";
+        error = "Dužina korisnižkog imena mora biti između 5 i 15 znakova.\n";
     } else if (illegalChars.test(fld.value)) {
         fld.style.background = 'Yellow'; 
-        error = "Korisnicko ime sadrzi nedozvoljene znakove.\n";
+        error = "Korisničko ime sadrži nedozvoljene znakove.\n";
     } else {
         fld.style.background = 'White';
     } 
@@ -172,15 +147,15 @@ function validatePassword(fld) {
  
     if (fld.value == "") {
         fld.style.background = 'Yellow';
-        error = "Niste unijeli sifru.\n";
+        error = "Niste unijeli šifru.\n";
     } else if ((fld.value.length < 7) || (fld.value.length > 15)) {
-        error = "Duzina sifre mora biti izmedju 7 i 15 znakova. \n";
+        error = "Dužina šifre mora biti između 7 i 15 znakova. \n";
         fld.style.background = 'Yellow';
     } else if (illegalChars.test(fld.value)) {
-        error = "Sifra sadrzi nedozvoljene znakove.\n";
+        error = "Šifra sadrzi nedozvoljene znakove.\n";
         fld.style.background = 'Yellow';
     } else if (!((fld.value.search(/(a-z)+/)) && (fld.value.search(/(0-9)+/)))) {
-        error = "Sifra mora sadrzavati bar jedan broj.\n";
+        error = "Šifra mora sadržavati bar jedan broj.\n";
         fld.style.background = 'Yellow';
     } else {
         fld.style.background = 'White';

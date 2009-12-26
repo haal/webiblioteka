@@ -1,4 +1,4 @@
-function validateKnjiga(theForm) {
+﻿function validateKnjiga(theForm) {
 	var reason = "";
 
   reason += validateEmpty(theForm.naslov);
@@ -10,7 +10,7 @@ function validateKnjiga(theForm) {
   
      
   if (reason != "") {
-    alert("Molimo popravite sljedece greske:\n" + reason);
+    alert("Molimo popravite sljedeće greške:\n" + reason);
     return false;
   }
 
@@ -39,7 +39,7 @@ function validateISBN(fld){
         error = "Niste unijeli ISBN.\n";
     } else if (!regIsbn.test(fld.value) || fld.value.length != 10) {
 		fld.style.background = 'Yellow'; 
-        error = "Polje ISBN mora sadrzavati 10 znakova bez razmaka.\n";
+        error = "Polje ISBN mora sadržavati 10 znakova bez razmaka.\n";
 	}
 	
 	return error;
@@ -55,7 +55,7 @@ function validateIzdanje(fld) {
     }
 	else if(fld.value.search(/\d{1}/)==-1){
 		fld.style.background = 'Yellow';
-		error = "Niste unijeli validno izdanje. Unesite broj izdanja, primjer: 2.\n";
+		error = "Niste unijeli validno izdanje. Unesite broj izdanja, primjer: 2\n";
 	}
 	return error;
 }

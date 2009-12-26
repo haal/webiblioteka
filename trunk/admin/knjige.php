@@ -179,7 +179,7 @@ $q03 = myquery("SELECT idZanr, naziv FROM zanr");
 ?>
 	Naslov:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="naslov" size="50" value="<?=$naslov?>"><br>
 	Podnaslov:<input type="text" name="podnaslov" size="50" value="<?=$podnaslov?>"><br>
-	ISBN:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="isbn" size="13" maxlength="13" value="<?=$isbn?>"><br>
+	ISBN:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="isbn" size="10" maxlength="10" value="<?=$isbn?>"><br>
 	Izdanje:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="izdanje" size="5" value="<?=$izdanje?>"><br>
 	Jezik:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="jezik" size="13" value="<?=$jezik?>"><br><br>
 	Pisac:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="autor" class="default"><?

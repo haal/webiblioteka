@@ -1,9 +1,7 @@
 function validateBiblioteka(theForm) {
 	var reason = "";
 
-  //reason += validateEmpty(theForm.naziv);
-  //reason += validateEmpty(theForm.adresa);
-  reason += validateNaziv(theForm.naziv);
+  reason += validateEmpty(theForm.naziv);
   reason += validateAdresa(theForm.adresa);
   reason += validateWebAdresa(theForm.webadresa);
   reason += validateEmail(theForm.email);
@@ -23,24 +21,13 @@ function validateEmpty(fld) {
   
     if (fld.value.length == 0) {
         fld.style.background = 'Yellow'; 
-        error = "Potrebna polja niste popunili.\n"
+        error = "Niste unijeli polje: ".concat(fld.name).concat(".\n");
     } else {
         fld.style.background = 'White';
     }
     return error;   
 }
 
-function validateNaziv(fld) {
-    var error = "";
- 
-    if (fld.value == "") {
-        fld.style.background = 'Yellow'; 
-        error = "Niste unijeli naziv.\n";
-    } else {
-        fld.style.background = 'White';
-    } 
-    return error;
-}
 
 function validateAdresa(fld) {
     var error = "";
