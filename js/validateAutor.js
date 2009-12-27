@@ -15,7 +15,7 @@
 
 function validateImePrezime(fld) {
     var error = "";
-	var regImePrez=/^[ABCČĆDĐEFGHIJKLMNOPRSŠTUVZŽabcčćdđefghijklmnoprsštuvzž]+$/;
+	var regImePrez=/^[ABCČĆDĐEFGHIJKLMNOPQRSŠTUVZŽXYabcčćdđefghijklmnopqrsštuvzžxy]+$/;
   
     if (fld.value.length == 0) {
         fld.style.background = 'Yellow'; 
