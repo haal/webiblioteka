@@ -199,7 +199,6 @@ else
 <p>&nbsp;</p>
 <p>&nbsp;</p><br><br><br><br>
 <p align="center">Copyright (c) 2009 Alešević Haris, Herić Admir</p>
-
 </body>
 </html>
 <?
