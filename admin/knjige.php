@@ -27,6 +27,12 @@ if ($_REQUEST['akcija'] == 'dodajknjigu') {
 		return 0;
 	}
 
+	//provjera da li postoji knjiga sa istim isbn-om
+	$q00 = myquery("SELECT isbn FROM knjigaopis WHERE isbn='$isbn'");
+	if (mysql_num_rows($q00)>=1) {
+		niceerror("Knjiga sa unesenim ISBN-om već postoji u bazi!");
+		return 0;
+	} else {
 	$q01 = myquery("INSERT INTO knjigaopis ( Naslov, Podnaslov, ISBN, Izdanje, Opis, Jezik, GodinaIzdavanja, DatumUlaza, idZanr)
 	VALUES ('$naslov','$podnaslov','$isbn', '$izdanje', '$opis', '$jezik', '$godina', FROM_UNIXTIME('$vrijeme') ,'$zanr')");
 	
@@ -34,7 +40,7 @@ if ($_REQUEST['akcija'] == 'dodajknjigu') {
 	
 	$knjiga = mysql_result($q02,0,0);
 	$insert = myquery("INSERT INTO pisac ( idAutor, idKnjigaOpis ) VALUES ( '$autor', '$knjiga' )");
-	
+	}
 ?>
 	<script language="JavaScript">
 		window.location="?sta=admin/knjige";

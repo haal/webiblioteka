@@ -12,7 +12,7 @@ if ($_REQUEST['akcija'] == 'dodajclana') {
 	
 	$ime = my_escape($_POST['ime']);
 	$prezime = my_escape($_POST['prezime']);
-	$jmbg = intval($_POST['jmbg']);
+	$jmbg = my_escape($_POST['jmbg']);
 	$adresa = $_POST['adresa'];
 	$pbroj = intval($_POST['pbroj']);
 	$grad = my_escape($_POST['grad']);
@@ -23,7 +23,29 @@ if ($_REQUEST['akcija'] == 'dodajclana') {
 	$odobren = intval($_POST['odobren']);
 	$poslovnica = intval($_POST['poslovnica']);
 	
-	$q01 = myquery("INSERT INTO auth ( korisnickoime, sifra, odobren ) VALUES ( '$username', '$pass', '$odobren' )");
+	//provjera da li vec postoji korisnicko ime ili jmbg
+	$q00 = myquery("SELECT korisnickoime FROM auth WHERE korisnickoime='$username'");
+	$q001 = "SELECT JMBG FROM osoba WHERE jmbg='$jmbg'";
+	if (mysql_num_rows($q00)>=1) {
+		niceerror("Korisničko ima nije slobodno!");
+	} 
+	else if (mysql_num_rows($q001)>=1){
+		niceerror("Osoba sa unesenim JMBG-om već postoji u bazi!");
+	}
+	// dodajemo korisnika	
+	else {
+	$q01 = myquery("INSERT INTO auth ( korisnickoime, sifra, odobren ) VALUES ( '$username', '$pass', 0 )"); //korisnika mora odobriti admin
+	$q02 = myquery("SELECT idauth FROM auth WHERE korisnickoime='$username'"); //da mozemo povezati osobu sa auth
+	$auth = mysql_result($q02,0,0);
+	$q03 = myquery("INSERT INTO osoba ( Ime, Prezime, JMBG, UlicaIBroj, PostanskiBroj, Grad, Telefon, email, idauth, idposlovnica)
+	VALUES ('$ime', '$prezime', '$jmbg', '$adresa', '$pbroj', '$grad', '$telefon', '$email', '$auth', 1)");
+	$q04 = myquery("SELECT idOsoba FROM osoba WHERE idAuth='$auth'");
+	$idOsoba = mysql_result($q04,0,0);
+	$q05 = myquery("INSERT INTO tiposobe (idtiposobe, naziv) VALUES ('$idOsoba','clan')");
+	nicemessage("Uspješan unos novog člana.");
+	}
+	
+	/*$q01 = myquery("INSERT INTO auth ( korisnickoime, sifra, odobren ) VALUES ( '$username', '$pass', '$odobren' )");
 	$q02 = myquery("SELECT idauth FROM auth WHERE korisnickoime='$username'");
 	$auth = mysql_result($q02,0,0);
 
@@ -32,7 +54,7 @@ if ($_REQUEST['akcija'] == 'dodajclana') {
 	$q19 = myquery("SELECT idosoba FROM osoba WHERE ime='$ime' AND prezime='$prezime' AND jmbg='$jmbg'");
 	$id = mysql_result($q19,0,0);
 	
-	$q20 = myquery("INSERT INTO tiposobe ( idtiposobe, naziv) VALUES ('$id', 'clan')");
+	$q20 = myquery("INSERT INTO tiposobe ( idtiposobe, naziv) VALUES ('$id', 'clan')");*/
 	
 ?>
 	<script language="JavaScript">
@@ -98,7 +120,7 @@ if($clan){
 
 	$ime = my_escape($_POST['ime']);
 	$prezime = my_escape($_POST['prezime']);
-	$jmbg = intval($_POST['jmbg']);
+	$jmbg = my_escape($_POST['jmbg']);
 	$adresa = $_POST['adresa'];
 	$pbroj = intval($_POST['pbroj']);
 	$grad = my_escape($_POST['grad']);
