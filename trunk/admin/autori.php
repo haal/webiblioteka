@@ -34,7 +34,7 @@ if ($_REQUEST["akcija"]=="edit")
 				  FROM autor WHERE idAutor=$autor");
 	$ime = mysql_result($q03,0,0);
 	$prezime = mysql_result($q03,0,1);
-	$biografija = mysql_result($q03,0,1);
+	$biografija = mysql_result($q03,0,2);
 	}
 
 }
