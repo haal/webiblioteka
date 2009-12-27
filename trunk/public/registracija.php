@@ -6,7 +6,7 @@ if ($_REQUEST["akcija"]=="reg"){
 
     $ime = my_escape($_POST['ime']);
 	$prezime = my_escape($_POST['prezime']);
-	$jmbg = intval($_POST['jmbg']);
+	$jmbg = my_escape($_POST['jmbg']);
 	$adresa = my_escape($_POST['adresa']);
 	$pbroj = intval($_POST['pbroj']);
 	$grad = my_escape($_POST['grad']);
@@ -16,6 +16,17 @@ if ($_REQUEST["akcija"]=="reg"){
 	$pass = my_escape($_POST['pass']);
    
 
+	//provjera da li vec postoji korisnicko ime ili jmbg
+	$q00 = myquery("SELECT korisnickoime FROM auth WHERE korisnickoime='$username'");
+	$q001 = "SELECT JMBG FROM osoba WHERE jmbg='$jmbg'";
+	if (mysql_num_rows($q00)>=1) {
+		niceerror("Korisničko ima nije slobodno!");
+	} 
+	else if (mysql_num_rows($q001)>=1){
+		niceerror("Osoba sa unesenim JMBG-om već postoji u bazi!");
+	}
+	// dodajemo korisnika	
+	else {
 	$q01 = myquery("INSERT INTO auth ( korisnickoime, sifra, odobren ) VALUES ( '$username', '$pass', 0 )"); //korisnika mora odobriti admin
 	$q02 = myquery("SELECT idauth FROM auth WHERE korisnickoime='$username'"); //da mozemo povezati osobu sa auth
 	$auth = mysql_result($q02,0,0);
@@ -24,6 +35,8 @@ if ($_REQUEST["akcija"]=="reg"){
 	$q04 = myquery("SELECT idOsoba FROM osoba WHERE idAuth='$auth'");
 	$idOsoba = mysql_result($q04,0,0);
 	$q05 = myquery("INSERT INTO tiposobe (idtiposobe, naziv) VALUES ('$idOsoba','clan')");
+	nicemessage("Uspješna registracija.");
+	}
 }
 
 ?>
